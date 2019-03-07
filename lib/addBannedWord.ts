@@ -1,5 +1,4 @@
 import fs from "fs";
-const bannedWords: object = require("./loadBannedWords.js");
 
 function addBannedWord(word: string, bannedWords: Array<string>): string {
   word = word.toLowerCase();
