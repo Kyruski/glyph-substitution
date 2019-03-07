@@ -1,4 +1,4 @@
-const letterObj = require('./loadDictionary');
+const letterObj = require('./lib/loadDictionary');
 
 //at start, load in everything
 //separate file for each letter's substitutions
