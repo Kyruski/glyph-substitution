@@ -19,7 +19,7 @@ function addToAllCombos(itemToAdd: string, arr: Array<string>): void {
 
 function makeGlyphCombinations(
   inputString: string,
-  obj: object
+  obj: object | any
 ): Array<string> {
   let combinationsArray: Array<string> = [""];
   for (let glyph of inputString) {

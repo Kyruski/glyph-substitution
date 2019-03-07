@@ -2,12 +2,12 @@
   "name": "glyph-substitution",
   "version": "1.0.0",
   "description": "Checks strings for glyph substitutions in words",
-  "main": "index.js",
+  "main": "main.js",
   "directories": {
     "lib": "lib"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "electron ."
   },
   "repository": {
     "type": "git",
@@ -21,6 +21,13 @@
   "homepage": "https://github.com/Kyruski/glyph-substitution#readme",
   "dependencies": {
     "@types/node": "^11.10.5",
+    "@types/react": "^16.8.7",
+    "@types/react-dom": "^16.8.2",
     "typescript": "^3.3.3333"
+  },
+  "devDependencies": {
+    "electron": "^4.0.7",
+    "react": "^16.8.4",
+    "react-dom": "^16.8.4"
   }
 }

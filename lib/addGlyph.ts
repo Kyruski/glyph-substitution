@@ -1,6 +1,10 @@
 import fs from "fs";
 
-function addGlyph(glyph: string, letter: string, glyphObj: object): string {
+function addGlyph(
+  glyph: string,
+  letter: string,
+  glyphObj: object | any
+): string {
   letter = letter.toLowerCase();
   if (glyphObj[glyph]) {
     if (glyphObj[glyph].includes(letter))

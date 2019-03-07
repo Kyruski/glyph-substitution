@@ -29,7 +29,7 @@ let letters: Array<string> = [
   "z"
 ];
 
-const obj: object = {};
+const obj: object | any = {};
 for (let letter of letters) {
   let document: Array<string> = fs
     .readFileSync(__dirname + `/dependencies/letters/${letter}.txt`, "utf-8")
