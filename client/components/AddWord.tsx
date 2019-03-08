@@ -12,4 +12,4 @@ function AddWord(): JSX.Element {
   );
 }
 
-module.exports = AddWord;
+export default AddWord;
