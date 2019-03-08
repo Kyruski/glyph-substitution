@@ -1,12 +1,18 @@
 import * as React from "react";
 import { useState, useEffect } from "react";
 import * as ReactDOM from "react-dom";
+import AddWord from "./AddWord.js";
 
 console.log("we hereerererere", document.getElementById("app"));
 function App(): JSX.Element {
-  return <div>Hello Tony, it is 4:50pm right now</div>;
+  return (
+    <div>
+      <div>Welcome to the Glyph Substitution Checker</div>
+      <AddWord />
+    </div>
+  );
 }
 
-module.exports = App;
+export default App;
 
 ReactDOM.render(<App />, document.getElementById("app"));
