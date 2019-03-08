@@ -1,4 +1,4 @@
-import fs from "fs";
+const fs = require("fs");
 
 const bannedWords: Array<string> = [];
 let document: Array<string> = fs
@@ -10,4 +10,4 @@ document.forEach(
   }
 );
 
-module.exports = bannedWords;
+export default bannedWords;

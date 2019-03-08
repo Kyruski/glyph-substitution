@@ -2,6 +2,9 @@ const path = require('path');
 
 module.exports = {
   entry: './client/components/App.tsx',
+  node: {
+    fs: "empty"
+  },
   module: {
     rules: [
       {
