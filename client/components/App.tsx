@@ -1,15 +1,21 @@
 import * as React from "react";
 import { useState, useEffect } from "react";
 import * as ReactDOM from "react-dom";
-import AddWord from "./AddWord.js";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import AddWord from "./AddWord";
 
-console.log("we hereerererere", document.getElementById("app"));
 function App(): JSX.Element {
+  // const components = [["AddWord", "Add a new Banned Word", AddWord]];
+  // let [currentWindow, setCurrentWindow] = useState<string>(components[0][0]);
+
   return (
-    <div>
-      <div>Welcome to the Glyph Substitution Checker</div>
-      <AddWord />
-    </div>
+    <Router>
+      <div>
+        <div>Welcome to the Glyph Substitution Checker</div>
+        <Link to="/AddWord">Add a new Banned Word</Link>
+        <Route path="/AddWord" component={AddWord} />
+      </div>
+    </Router>
   );
 }
 
