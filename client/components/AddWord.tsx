@@ -12,18 +12,23 @@ function AddWord(props: any): JSX.Element {
       setMessage("Please enter a word to submit");
     } else {
       setMessage("");
-      let result = props.addWord(word);
-      if (result === "we good") {
-        word.value = "";
-      }
+      let result = props.addWord(word.value);
+      word.value = "";
       setMessage(result);
+    }
+  };
+
+  const onKeyPress = function(event: any) {
+    if (event.which === 13) {
+      event.preventDefault();
+      onButtonClick();
     }
   };
 
   return (
     <div>
       <div>Add a word to the Banned Words List</div>
-      <form>
+      <form onKeyPress={onKeyPress}>
         <input type="text" id="add-word" />
         <button type="button" onClick={onButtonClick}>
           Add Word

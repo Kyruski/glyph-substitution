@@ -46,4 +46,4 @@ for (let letter of letters) {
   }
 }
 
-module.exports = obj;
+export default obj;

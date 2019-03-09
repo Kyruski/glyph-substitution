@@ -1,4 +1,4 @@
-import fs from "fs";
+import axios from "axios";
 
 function addGlyph(
   glyph: string,
@@ -13,11 +13,8 @@ function addGlyph(
   } else {
     glyphObj[glyph] = [letter];
   }
-  fs.appendFileSync(
-    __dirname + `/dependencies/letters/${letter}.txt`,
-    glyph + "\r\n"
-  );
+  axios.post("http://localhost:6969/load/glyph", { glyph, letter });
   return `Glyph "${glyph}" has been added as a substitution for "${letter}".`;
 }
 
-module.exports = addGlyph;
+export default addGlyph;

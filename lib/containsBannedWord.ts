@@ -16,4 +16,4 @@ function containsBannedWord(
   return null;
 }
 
-module.exports = containsBannedWord;
+export default containsBannedWord;
