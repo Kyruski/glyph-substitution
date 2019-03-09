@@ -16,14 +16,14 @@ function AddGlyph(props: any): JSX.Element {
       setMessage("Please enter a letter to submit");
     } else {
       setMessage("");
-      let result = props.addGlyph(glyph.value, letter.value);
+      let result: string = props.addGlyph(glyph.value, letter.value);
       glyph.value = "";
       letter.value = "";
       setMessage(result);
     }
   };
 
-  const onKeyPress = function(event: any) {
+  const onKeyPress = function(event: any): void {
     if (event.which === 13) {
       event.preventDefault();
       onButtonClick();

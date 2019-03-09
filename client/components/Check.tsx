@@ -18,7 +18,7 @@ function Check({ bannedWords, glyphList }: any): JSX.Element {
         string.value,
         glyphList
       );
-      let result = containsBannedWord(combos, bannedWords);
+      let result: string | null = containsBannedWord(combos, bannedWords);
       string.value = "";
       setMessage(
         result
@@ -28,7 +28,7 @@ function Check({ bannedWords, glyphList }: any): JSX.Element {
     }
   };
 
-  const onKeyPress = function(event: any) {
+  const onKeyPress = function(event: any): void {
     if (event.which === 13) {
       event.preventDefault();
       onButtonClick();

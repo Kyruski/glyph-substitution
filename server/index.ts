@@ -46,7 +46,6 @@ app.post(
   "/load/word",
   (req: express.Request, res: express.Response): void => {
     let word: string = req.body.payload;
-    console.log("we in here ", word);
     fs.appendFileSync(
       path.join(__dirname, "../lib/dependencies/bannedWords.txt"),
       word + "\n"

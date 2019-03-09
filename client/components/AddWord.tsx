@@ -12,13 +12,13 @@ function AddWord(props: any): JSX.Element {
       setMessage("Please enter a word to submit");
     } else {
       setMessage("");
-      let result = props.addWord(word.value);
+      let result: string = props.addWord(word.value);
       word.value = "";
       setMessage(result);
     }
   };
 
-  const onKeyPress = function(event: any) {
+  const onKeyPress = function(event: any): void {
     if (event.which === 13) {
       event.preventDefault();
       onButtonClick();
