@@ -35,7 +35,7 @@ app.post(
   (req: express.Request, res: express.Response): void => {
     let { glyph, letter } = req.body;
     fs.appendFileSync(
-      __dirname + `../lib/dependencies/letters/${letter}.txt`,
+      path.join(__dirname, `../lib/dependencies/letters/${letter}.txt`),
       glyph + "\r\n"
     );
     res.send("Success");

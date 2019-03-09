@@ -3,7 +3,9 @@ import { useState, useEffect } from "react";
 import * as ReactDOM from "react-dom";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import AddWord from "./AddWord";
+import AddGlyph from "./AddGlyph";
 import addBannedWord from "../../lib/addBannedWord";
+import addSubstitution from "../../lib/addGlyph";
 import axios from "axios";
 
 function App(): JSX.Element {
@@ -23,15 +25,32 @@ function App(): JSX.Element {
     return result;
   };
 
+  const addGlyph = function(glyph: string, letter: string): string {
+    let result: string = addSubstitution(glyph, letter, glyphList);
+    return result;
+  };
+
   return (
     <Router>
       <div>
         <div>Welcome to the Glyph Substitution Checker</div>
         <Link to="/AddWord">Add a new Banned Word</Link>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <Link to="/AddGlyph">Add a new Glyph Substitution</Link>
         <Route
           path="/AddWord"
           component={() => (
             <AddWord addWord={(word: string) => addWord(word)} />
+          )}
+        />
+        <Route
+          path="/AddGlyph"
+          component={() => (
+            <AddGlyph
+              addGlyph={(glyph: string, letter: string) =>
+                addGlyph(glyph, letter)
+              }
+            />
           )}
         />
       </div>
