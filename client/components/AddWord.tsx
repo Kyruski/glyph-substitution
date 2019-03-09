@@ -27,7 +27,7 @@ function AddWord(props: any): JSX.Element {
 
   return (
     <div>
-      <div>Add a word to the Banned Words List</div>
+      <div id="component-title">Add a word to the Banned Words List</div>
       <form onKeyPress={onKeyPress}>
         <input type="text" id="add-word" />
         <button type="button" onClick={onButtonClick}>

@@ -47,4 +47,4 @@ function makeGlyphCombinations(
   return combinationsArray;
 }
 
-module.exports = makeGlyphCombinations;
+export default makeGlyphCombinations;

@@ -32,11 +32,24 @@ function AddGlyph(props: any): JSX.Element {
 
   return (
     <div>
-      <div>Add a Glyph to the Substitution list</div>
+      <div id="component-title">Add a Glyph to the Substitution list</div>
       <form onKeyPress={onKeyPress}>
-        Glyph: <input type="text" id="add-glyph" maxLength={1} /> <br />
-        What letter it's a Substitution for:{" "}
-        <input type="text" id="add-letter" maxLength={1} /> <br />
+        Add Glyph{" "}
+        <input
+          type="text"
+          id="add-glyph"
+          maxLength={1}
+          size={2}
+          style={{ textAlign: "center" }}
+        />{" "}
+        as a substitution for the letter{" "}
+        <input
+          type="text"
+          id="add-letter"
+          maxLength={1}
+          size={2}
+          style={{ textAlign: "center" }}
+        />
         <button type="button" onClick={onButtonClick}>
           Add Glyph
         </button>
