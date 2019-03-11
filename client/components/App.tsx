@@ -17,7 +17,6 @@ function App(): JSX.Element {
     axios.get("http://localhost:6969/load").then(data => {
       glyphList = data.data.glyphList;
       bannedWords = data.data.bannedWords;
-      console.log(glyphList);
     });
   })();
 

@@ -18,7 +18,7 @@ function Check({ bannedWords, glyphList }: any): JSX.Element {
         string.value,
         glyphList
       );
-      let result: string | null = containsBannedWord(combos, bannedWords);
+      let result: string = containsBannedWord(combos, bannedWords);
       string.value = "";
       setMessage(
         result
