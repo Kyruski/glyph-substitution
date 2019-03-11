@@ -44,6 +44,7 @@ function App(): JSX.Element {
           <Link to="/AddWord">Add a Banned Word</Link>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           <Link to="/AddGlyph">Add a Glyph Substitution</Link>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           <button
             onClick={(e: any) => {
               e.preventDefault;
@@ -54,7 +55,7 @@ function App(): JSX.Element {
             Launch Bot{" "}
           </button>
         </nav>
-        <div>
+        <div id="main">
           <Route
             path="/Check"
             component={() => (

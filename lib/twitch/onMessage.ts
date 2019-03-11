@@ -1,7 +1,5 @@
 import makeGlyphCombinations from "../../lib/makeGlyphCombinations";
 import containsBannedWord from "../../lib/containsBannedWord";
-import addBannedWord from "../../lib/addBannedWord";
-import addSubstitution from "../../lib/addGlyph";
 import axios from "axios";
 import tmi from "tmi.js";
 import client from "./bot";
@@ -28,13 +26,11 @@ export default function onMessageHandler(
   msg: string,
   self: boolean
 ): void {
-  console.log("this is elf", self);
-  const user = context.username;
+  const user: string = context.username;
   if (user === "glyphsubstitutionbot") {
     return;
   }
-  let banMessage = checkMsg(msg);
-  console.log("words, ", bannedWords, "msg", banMessage);
+  const banMessage: string = checkMsg(msg);
   if (banMessage) {
     client.say(target, "Get banned " + user);
     client.say(target, `/timeout ${user} 10`);

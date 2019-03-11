@@ -1,4 +1,24 @@
+body {
+  box-sizing: border-box;
+  margin: 0px;
+  background-color: #303030;
+  color: #fff;
+}
+
+nav {
+  display: flex;
+  text-align: center;
+  background-color: #6441a5;
+  padding-top: 20px;
+  justify-content: space-evenly;
+}
+
 nav,
 #component-title {
   padding-bottom: 20px;
+}
+
+a {
+  color: #fff;
+  text-decoration: none;
 }
