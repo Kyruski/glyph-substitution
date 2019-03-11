@@ -17,6 +17,7 @@ const opts: tmi.Options = {
 const client: tmi.Client = new tmi.client(opts);
 
 client.on("message", onMessageHandler);
+// @ts-ignore
 client.on("connected", onConnectedHandler);
 
 client.connect();

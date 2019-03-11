@@ -8,6 +8,7 @@ import AddGlyph from "./AddGlyph";
 import addBannedWord from "../../lib/addBannedWord";
 import addSubstitution from "../../lib/addGlyph";
 import axios from "axios";
+import { exec } from "child_process";
 
 function App(): JSX.Element {
   let glyphList: any;
@@ -30,6 +31,10 @@ function App(): JSX.Element {
     return result;
   };
 
+  const startBot = function(): void {
+    exec("npm run bot");
+  };
+
   return (
     <Router>
       <div>
@@ -39,6 +44,15 @@ function App(): JSX.Element {
           <Link to="/AddWord">Add a Banned Word</Link>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           <Link to="/AddGlyph">Add a Glyph Substitution</Link>
+          <button
+            onClick={(e: any) => {
+              e.preventDefault;
+              startBot();
+            }}
+          >
+            {" "}
+            Launch Bot{" "}
+          </button>
         </nav>
         <div>
           <Route
