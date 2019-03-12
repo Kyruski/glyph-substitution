@@ -11,6 +11,9 @@ import axios from "axios";
 import { exec } from "child_process";
 
 function App(): JSX.Element {
+  let [isBotRunning, setIsBotRunning] = useState(false);
+  let [runningProcess, setRunningProcess] = useState(0);
+
   let glyphList: any;
   let bannedWords: Array<string>;
 
@@ -31,8 +34,18 @@ function App(): JSX.Element {
     return result;
   };
 
-  const startBot = function(): void {
-    exec("npm run bot");
+  const toggleBot = function(): void {
+    console.log(runningProcess);
+    if (isBotRunning) {
+      let oldProcess = exec(`kill -9 ${runningProcess}`);
+      console.log(oldProcess);
+      setRunningProcess(0);
+    } else {
+      let newProcess = exec("npm run run-bot");
+      setRunningProcess(newProcess.pid);
+      console.log(newProcess);
+    }
+    setIsBotRunning(!isBotRunning);
   };
 
   return (
@@ -48,11 +61,11 @@ function App(): JSX.Element {
           <button
             onClick={(e: any) => {
               e.preventDefault;
-              startBot();
+              toggleBot();
             }}
           >
             {" "}
-            Launch Bot{" "}
+            {isBotRunning ? "Turn off Bot" : "Launch Bot"}{" "}
           </button>
         </nav>
         <div id="main">
