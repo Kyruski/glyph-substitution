@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 function AddWord(props: any): JSX.Element {
   let [message, setMessage] = useState("");
