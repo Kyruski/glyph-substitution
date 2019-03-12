@@ -44,7 +44,6 @@ function App(): JSX.Element {
     }
     setIsBotRunning(!isBotRunning);
   };
-  console.log(bannedWords);
 
   return (
     <Router>
