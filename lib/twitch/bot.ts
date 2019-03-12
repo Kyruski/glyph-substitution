@@ -4,13 +4,15 @@ import tmi from "tmi.js";
 import onMessageHandler from "./onMessage";
 import onConnectedHandler from "./onConnect";
 
+// @ts-ignore
+const channel: string = process.argv[2] || process.env.CHANNEL_NAME;
+
 const opts: tmi.Options = {
   identity: {
     username: process.env.BOT_USERNAME,
     password: process.env.OAUTH_TOKEN
   },
-  // @ts-ignore
-  channels: [process.env.CHANNEL_NAME]
+  channels: [channel]
 };
 
 // @ts-ignore

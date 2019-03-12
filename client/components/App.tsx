@@ -5,14 +5,14 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Check from "./Check";
 import AddWord from "./AddWord";
 import AddGlyph from "./AddGlyph";
+import Bot from "./Bot";
 import addBannedWord from "../../lib/addBannedWord";
 import addSubstitution from "../../lib/addGlyph";
 import axios from "axios";
 import { exec } from "child_process";
 
 function App(): JSX.Element {
-  let [isBotRunning, setIsBotRunning] = useState(false);
-  let [runningProcess, setRunningProcess] = useState(0);
+  let [runningProcesses, setRunningProcesses] = useState([]);
 
   let glyphList: any;
   let bannedWords: Array<string>;
@@ -34,15 +34,32 @@ function App(): JSX.Element {
     return result;
   };
 
-  const toggleBot = function(): void {
-    if (isBotRunning) {
-      exec(`kill -9 ${runningProcess}`);
-      setRunningProcess(0);
-    } else {
-      let newProcess = exec("node bot.js");
-      setRunningProcess(newProcess.pid);
+  const toggleBot = function(channel: string): void {
+    console.log("channel", channel);
+    let pid: number;
+    let index: number;
+    for (let [i, item] of runningProcesses.entries()) {
+      console.log(item, i);
+      if (item[0] === channel) {
+        // @ts-ignore
+        pid = item[1].pid;
+        index = i;
+        break;
+      }
     }
-    setIsBotRunning(!isBotRunning);
+    // @ts-ignore
+    if (pid) {
+      exec(`kill -9 ${pid}`);
+      // @ts-ignore
+      let slice1 = runningProcesses.slice(0, index);
+      // @ts-ignore
+      let slice2 = runningProcesses.slice(index + 1);
+      setRunningProcesses([...slice1, ...slice2]);
+    } else {
+      let newProcess = exec(`node bot.js ${channel}`);
+      // @ts-ignore
+      setRunningProcesses([...runningProcesses, [channel, newProcess]]);
+    }
   };
 
   return (
@@ -55,6 +72,8 @@ function App(): JSX.Element {
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           <Link to="/AddGlyph">Add a Glyph Substitution</Link>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <Link to="/Bot">Running Bot Instances</Link>
+          {/* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           <button
             id="bot-button"
             onClick={(e: any) => {
@@ -64,7 +83,7 @@ function App(): JSX.Element {
           >
             {" "}
             {isBotRunning ? "Turn off Bot" : "Launch Bot"}{" "}
-          </button>
+          </button> */}
         </nav>
         <div id="main">
           <Route
@@ -75,18 +94,16 @@ function App(): JSX.Element {
           />
           <Route
             path="/AddWord"
-            component={() => (
-              <AddWord addWord={(word: string) => addWord(word)} />
-            )}
+            component={() => <AddWord addWord={addWord} />}
           />
           <Route
             path="/AddGlyph"
+            component={() => <AddGlyph addGlyph={addGlyph} />}
+          />
+          <Route
+            path="/Bot"
             component={() => (
-              <AddGlyph
-                addGlyph={(glyph: string, letter: string) =>
-                  addGlyph(glyph, letter)
-                }
-              />
+              <Bot runningProcesses={runningProcesses} toggleBot={toggleBot} />
             )}
           />
         </div>
