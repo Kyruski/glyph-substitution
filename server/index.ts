@@ -1,10 +1,12 @@
 import express from "express";
 import cors from "cors";
-import bluebird from "bluebird";
 import glyphList from "../lib/loadDictionary";
 import bannedWords from "../lib/loadBannedWords";
 import fs from "fs";
 import path from "path";
+
+const port: number = 6969;
+const app: express.Application = express();
 
 interface Loaded {
   glyphList: object;
@@ -15,10 +17,6 @@ const loaded: Loaded = {
   glyphList,
   bannedWords
 };
-
-const port: number = 6969;
-const app: express.Application = express();
-bluebird.promisifyAll(app);
 
 app.use(cors());
 app.use(express.json());

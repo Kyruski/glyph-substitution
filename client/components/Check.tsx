@@ -4,6 +4,7 @@ import makeGlyphCombinations from "../../lib/makeGlyphCombinations";
 import containsBannedWord from "../../lib/containsBannedWord";
 
 function Check({ bannedWords, glyphList }: any): JSX.Element {
+  console.log(bannedWords);
   let [message, setMessage] = useState("");
 
   const onButtonClick: any = function(): void {
