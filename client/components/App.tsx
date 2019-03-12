@@ -35,15 +35,12 @@ function App(): JSX.Element {
   };
 
   const toggleBot = function(): void {
-    console.log(runningProcess);
     if (isBotRunning) {
-      let oldProcess = exec(`kill -9 ${runningProcess}`);
-      console.log(oldProcess);
+      exec(`kill -9 ${runningProcess}`);
       setRunningProcess(0);
     } else {
-      let newProcess = exec("npm run run-bot");
+      let newProcess = exec("node bot.js");
       setRunningProcess(newProcess.pid);
-      console.log(newProcess);
     }
     setIsBotRunning(!isBotRunning);
   };
@@ -59,6 +56,7 @@ function App(): JSX.Element {
           <Link to="/AddGlyph">Add a Glyph Substitution</Link>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           <button
+            id="bot-button"
             onClick={(e: any) => {
               e.preventDefault;
               toggleBot();

@@ -13,6 +13,10 @@ nav {
   justify-content: space-evenly;
 }
 
+#main {
+  padding: 10px;
+}
+
 nav,
 #component-title {
   padding-bottom: 20px;
@@ -21,4 +25,8 @@ nav,
 a {
   color: #fff;
   text-decoration: none;
+}
+
+#bot-button {
+  width: 80px;
 }

@@ -8,9 +8,9 @@
   },
   "scripts": {
     "start": "electron .",
-    "webpack": "webpack -d --watch",
+    "webpack": "webpack -d --watch --config webpack-app.config.js",
     "dev": "ts-node-dev --respawn --transpileOnly ./server/index.ts",
-    "bot": "ts-node-dev --respawn --transpileOnly ./lib/twitch/bot.ts",
+    "bot": "webpack -d --watch --config webpack-bot.config.js",
     "run-bot": "ts-node ./lib/twitch/bot.ts"
   },
   "repository": {
