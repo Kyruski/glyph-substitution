@@ -8,7 +8,7 @@
 
 ## Problem
 
-> The word 'apple' is banned in a chat. The user can type 'áppłê' and the chat bot will most likely not catch this.
+> The word 'apple' is banned in a chat. The user can type 'áppłê' and a normal chat bot will most likely not catch this.
 
 ## Solution
 
