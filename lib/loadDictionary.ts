@@ -31,7 +31,12 @@ let letters: Array<string> = [
 ];
 
 const glyphList: object | any = {};
-let rootPath = path.join(process.argv[0], "../../../../../../../../../../lib");
+let runCondition = process.argv[0].split("/");
+let rootPath =
+  runCondition[runCondition.length - 1] === "node"
+    ? path.join(process.argv[1], "../lib")
+    : path.join(process.argv[0], "../../../../../../../../../../lib");
+console.log(rootPath);
 for (let letter of letters) {
   let document: Array<string> = fs
     .readFileSync(
