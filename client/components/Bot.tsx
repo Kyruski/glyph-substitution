@@ -67,7 +67,7 @@ const Bot = function(props: any): JSX.Element {
           </thead>
           <tbody>
             {props.runningProcesses.map(
-              (runningProcess: any, index: number) => (
+              (runningProcess: any, index: number): JSX.Element => (
                 <ActiveBot
                   runningProcess={runningProcess}
                   toggleBot={props.toggleBot}

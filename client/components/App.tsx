@@ -9,12 +9,11 @@ import Bot from "./Bot";
 import addBannedWord from "../../lib/addBannedWord";
 import addSubstitution from "../../lib/addGlyph";
 // import axios from "axios";
-import glyphList from "../../lib/loadDictionary";
+import { glyphList, lettersList } from "../../lib/loadDictionary";
 import bannedWords from "../../lib/loadBannedWords";
 import { exec } from "child_process";
 
 function App(): JSX.Element {
-  console.log(bannedWords);
   let [runningProcesses, setRunningProcesses] = useState([]);
 
   // let glyphList: any;
@@ -99,7 +98,9 @@ function App(): JSX.Element {
           />
           <Route
             path="/AddGlyph"
-            component={() => <AddGlyph addGlyph={addGlyph} />}
+            component={() => (
+              <AddGlyph addGlyph={addGlyph} lettersList={lettersList} />
+            )}
           />
           <Route
             path="/Bot"

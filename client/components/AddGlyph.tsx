@@ -1,8 +1,10 @@
 import * as React from "react";
 import { useState } from "react";
+import GlyphList from "./GlyphList";
 
 function AddGlyph(props: any): JSX.Element {
   let [message, setMessage] = useState("");
+  let [isShowing, setIsShowing] = useState(false);
 
   const onButtonClick: any = function(): void {
     // @ts-ignore
@@ -56,7 +58,19 @@ function AddGlyph(props: any): JSX.Element {
           Add Glyph
         </button>
       </form>
-      <div id="add-word-message">{message}</div>
+      <div id="add-glyph-message">{message}</div>
+      <div>
+        <button
+          type="button"
+          onClick={e => {
+            e.preventDefault;
+            setIsShowing(!isShowing);
+          }}
+        >
+          Show All Glyphs
+        </button>
+        {isShowing ? <GlyphList lettersList={props.lettersList} /> : ""}
+      </div>
     </div>
   );
 }
