@@ -41,6 +41,7 @@ function AddGlyph(props: any): JSX.Element {
           maxLength={1}
           size={2}
           style={{ textAlign: "center" }}
+          required
         />{" "}
         as a substitution for the letter{" "}
         <input
@@ -49,6 +50,7 @@ function AddGlyph(props: any): JSX.Element {
           maxLength={1}
           size={2}
           style={{ textAlign: "center" }}
+          required
         />
         <button type="button" onClick={onButtonClick}>
           Add Glyph

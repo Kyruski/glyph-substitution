@@ -35,11 +35,9 @@ function App(): JSX.Element {
   };
 
   const toggleBot = function(channel: string): void {
-    console.log("channel", channel);
     let pid: number;
     let index: number;
     for (let [i, item] of runningProcesses.entries()) {
-      console.log(item, i);
       if (item[0] === channel) {
         // @ts-ignore
         pid = item[1].pid;

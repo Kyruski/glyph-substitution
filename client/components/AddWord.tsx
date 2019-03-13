@@ -29,7 +29,7 @@ function AddWord(props: any): JSX.Element {
     <div>
       <div id="component-title">Add a word to the Banned Words List</div>
       <form onKeyPress={onKeyPress}>
-        <input type="text" id="add-word" />
+        <input type="text" id="add-word" required />
         <button type="button" onClick={onButtonClick}>
           Add Word
         </button>
