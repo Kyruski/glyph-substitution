@@ -4,7 +4,6 @@ import makeGlyphCombinations from "../../lib/makeGlyphCombinations";
 import containsBannedWord from "../../lib/containsBannedWord";
 
 function Check({ bannedWords, glyphList }: any): JSX.Element {
-  console.log(bannedWords);
   let [message, setMessage] = useState("");
 
   const onButtonClick: any = function(): void {
@@ -44,8 +43,8 @@ function Check({ bannedWords, glyphList }: any): JSX.Element {
         <button type="button" onClick={onButtonClick}>
           Check String
         </button>
+        <span className="red-text">{message}</span>
       </form>
-      <div id="add-word-message">{message}</div>
     </div>
   );
 }

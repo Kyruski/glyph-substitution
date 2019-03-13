@@ -67,23 +67,9 @@ function App(): JSX.Element {
       <div>
         <nav>
           <Link to="/Check">Check for Substitution</Link>
-          {"     "}
           <Link to="/AddWord">Add a Banned Word</Link>
-          {"     "}
           <Link to="/AddGlyph">Add a Glyph Substitution</Link>
-          {"     "}
           <Link to="/Bot">Running Bot Instances</Link>
-          {/* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <button
-            id="bot-button"
-            onClick={(e: any) => {
-              e.preventDefault;
-              toggleBot();
-            }}
-          >
-            {" "}
-            {isBotRunning ? "Turn off Bot" : "Launch Bot"}{" "}
-          </button> */}
         </nav>
         <div id="main">
           <Route

@@ -35,8 +35,8 @@ function AddWord(props: any): JSX.Element {
         <button type="button" onClick={onButtonClick}>
           Add Word
         </button>
+        <span className="red-text">{message}</span>
       </form>
-      <div id="add-word-message">{message}</div>
       <div>
         <button
           type="button"

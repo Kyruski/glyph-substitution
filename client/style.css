@@ -30,3 +30,7 @@ a {
 #bot-button {
   width: 80px;
 }
+
+.red-text {
+  color: red;
+}
