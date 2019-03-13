@@ -1,6 +1,6 @@
 import React from "react";
 
-const WordsList = function(props: any) {
+function WordsList(props: any): JSX.Element {
   return (
     <div>
       {/* 
@@ -13,7 +13,7 @@ const WordsList = function(props: any) {
         </thead>
         <tbody>
           {props.wordsList.map(
-            (item: Array<any>, index: number): JSX.Element => (
+            (item: Array<string>, index: number): JSX.Element => (
               <tr key={`word-${index}`}>
                 <td>{item}</td>
               </tr>
@@ -23,6 +23,6 @@ const WordsList = function(props: any) {
       </table>
     </div>
   );
-};
+}
 
 export default WordsList;

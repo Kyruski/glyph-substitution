@@ -2,7 +2,7 @@ import React from "react";
 import GlyphListItem from "./GlyphListItem";
 import makeLettersList from "../../lib/makeLettersList";
 
-const GlyphList = function(props: any) {
+function GlyphList(props: any): JSX.Element {
   const lettersList = makeLettersList(props.glyphList);
 
   return (
@@ -18,7 +18,7 @@ const GlyphList = function(props: any) {
         </thead>
         <tbody>
           {lettersList.map(
-            (item: Array<any>, index: number): JSX.Element => (
+            (item: [string, Array<string>], index: number): JSX.Element => (
               <GlyphListItem key={`glyphlistitem${index}`} item={item} />
             )
           )}
@@ -26,6 +26,6 @@ const GlyphList = function(props: any) {
       </table>
     </div>
   );
-};
+}
 
 export default GlyphList;

@@ -1,4 +1,3 @@
-// import axios from "axios";
 import fs from "fs";
 import path from "path";
 
@@ -8,7 +7,7 @@ function addGlyph(
   glyphObj: object | any
 ): string {
   letter = letter.toLowerCase();
-  let rootPath = path.join(
+  let rootPath: string = path.join(
     process.argv[0],
     "../../../../../../../../../../lib"
   );
@@ -19,7 +18,6 @@ function addGlyph(
   } else {
     glyphObj[glyph] = [letter];
   }
-  // axios.post("http://localhost:6969/load/glyph", { glyph, letter });
   fs.appendFileSync(
     path.join(rootPath, `./dependencies/letters/${letter}.txt`),
     glyph + "\r\n"
@@ -28,3 +26,7 @@ function addGlyph(
 }
 
 export default addGlyph;
+
+// import axios from "axios";
+
+// axios.post("http://localhost:6969/load/glyph", { glyph, letter });

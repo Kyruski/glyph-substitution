@@ -4,7 +4,7 @@ function containsBannedWord(
 ): string {
   for (let combo of combinationsArray) {
     for (let bannedWord of bannedWordsArray) {
-      let regex = new RegExp(bannedWord.split("").join("+"), "g");
+      let regex: RegExp = new RegExp(bannedWord.split("").join("+"), "g");
       let item: string = combo
         .split(" ")
         .join("")

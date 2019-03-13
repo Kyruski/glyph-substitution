@@ -1,62 +1,60 @@
-import * as React from "react";
-import { useState } from "react";
-import * as ReactDOM from "react-dom";
+import React, { useState } from "react";
+import ReactDOM from "react-dom";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { exec, ChildProcess } from "child_process";
 import Check from "./Check";
 import AddWord from "./AddWord";
 import AddGlyph from "./AddGlyph";
 import Bot from "./Bot";
 import addBannedWord from "../../lib/addBannedWord";
 import addSubstitution from "../../lib/addGlyph";
-// import axios from "axios";
 import glyphList from "../../lib/loadDictionary";
 import bannedWords from "../../lib/loadBannedWords";
-import { exec } from "child_process";
 
 function App(): JSX.Element {
-  let [runningProcesses, setRunningProcesses] = useState([]);
+  let [runningProcesses, setRunningProcesses]: [
+    Array<[string, ChildProcess]>,
+    Function
+  ] = useState([]); //an array of all running processes
 
-  // let glyphList: any;
-  // let bannedWords: Array<string>;
-
-  // (function loadItems(): void {
-  //   axios.get("http://localhost:6969/load").then(data => {
-  //     glyphList = data.data.glyphList;
-  //     bannedWords = data.data.bannedWords;
-  //   });
-  // })();
-
-  const addWord = function(word: string): string {
+  const addWord: (word: string) => string = function(word: string): string {
     let result: string = addBannedWord(word, bannedWords);
     return result;
   };
 
-  const addGlyph = function(glyph: string, letter: string): string {
+  const addGlyph: (glyph: string, letter: string) => string = function(
+    glyph: string,
+    letter: string
+  ): string {
     let result: string = addSubstitution(glyph, letter, glyphList);
     return result;
   };
 
-  const toggleBot = function(channel: string): void {
-    let pid: number;
-    let index: number;
+  const toggleBot: (channel: string) => void = function(channel: string): void {
+    let pid: number = 0;
+    let index: number = 0;
     for (let [i, item] of runningProcesses.entries()) {
+      //checks if bot is urnning in channel
       if (item[0] === channel) {
-        // @ts-ignore
         pid = item[1].pid;
         index = i;
         break;
       }
     }
-    // @ts-ignore
     if (pid) {
+      //bot is running in channel so kill it
       exec(`kill -9 ${pid}`);
-      // @ts-ignore
-      let slice1 = runningProcesses.slice(0, index);
-      // @ts-ignore
-      let slice2 = runningProcesses.slice(index + 1);
+      let slice1: Array<[string, ChildProcess]> = runningProcesses.slice(
+        0,
+        index
+      );
+      let slice2: Array<[string, ChildProcess]> = runningProcesses.slice(
+        index + 1
+      );
       setRunningProcesses([...slice1, ...slice2]);
     } else {
-      let newProcess = exec(`node bot.js ${channel}`);
+      //bot is not running so start it
+      let newProcess: ChildProcess = exec(`node bot.js ${channel}`);
       // @ts-ignore
       setRunningProcesses([...runningProcesses, [channel, newProcess]]);
     }
@@ -105,3 +103,15 @@ function App(): JSX.Element {
 export default App;
 
 ReactDOM.render(<App />, document.getElementById("app"));
+
+// import axios from "axios";
+
+// let glyphList: any;
+// let bannedWords: Array<string>;
+
+// (function loadItems(): void {
+//   axios.get("http://localhost:6969/load").then(data => {
+//     glyphList = data.data.glyphList;
+//     bannedWords = data.data.bannedWords;
+//   });
+// })();

@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import AllActiveBots from "./AllActiveBots";
 import StartBot from "./StartBot";
 
-const Bot = function(props: any): JSX.Element {
+function Bot(props: any): JSX.Element {
   return (
     <div>
       <StartBot
@@ -15,6 +15,6 @@ const Bot = function(props: any): JSX.Element {
       />
     </div>
   );
-};
+}
 
 export default Bot;

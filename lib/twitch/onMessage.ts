@@ -2,25 +2,14 @@ import makeGlyphCombinations from "../../lib/makeGlyphCombinations";
 import containsBannedWord from "../../lib/containsBannedWord";
 import glyphList from "../../lib/loadDictionary";
 import bannedWords from "../../lib/loadBannedWords";
-// import axios from "axios";
 import tmi from "tmi.js";
 import client from "./bot";
-
-// let glyphList: any;
-// let bannedWords: Array<string>;
 
 function checkMsg(msg: string): string {
   let combos: Array<string> = makeGlyphCombinations(msg, glyphList);
   let result: string = containsBannedWord(combos, bannedWords);
   return result;
 }
-
-// (function loadItems(): void {
-//   axios.get("http://localhost:6969/load").then(data => {
-//     glyphList = data.data.glyphList;
-//     bannedWords = data.data.bannedWords;
-//   });
-// })();
 
 export default function onMessageHandler(
   target: string,
@@ -38,3 +27,15 @@ export default function onMessageHandler(
     client.say(target, `/timeout ${user} 10`);
   }
 }
+
+// import axios from "axios";
+
+// let glyphList: any;
+// let bannedWords: Array<string>;
+
+// (function loadItems(): void {
+//   axios.get("http://localhost:6969/load").then(data => {
+//     glyphList = data.data.glyphList;
+//     bannedWords = data.data.bannedWords;
+//   });
+// })();

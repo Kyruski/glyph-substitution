@@ -1,24 +1,24 @@
-import * as React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import makeGlyphCombinations from "../../lib/makeGlyphCombinations";
 import containsBannedWord from "../../lib/containsBannedWord";
 
 function Check({ bannedWords, glyphList }: any): JSX.Element {
-  let [message, setMessage] = useState("");
+  let [message, setMessage]: [string, Function] = useState(""); //message to display on Entry error
 
-  const onButtonClick: any = function(): void {
+  const onButtonClick: () => void = function(): void {
     // @ts-ignore
-    const string: HTMLInputElement = document.getElementById("check-string");
-    // @ts-ignore
+    const string: HTMLInputElement = document.getElementById("check-string"); //grab the string to check
     if (string.value === "") {
+      //no string entered
       setMessage("Please enter a string to check");
     } else {
+      //valid string
       setMessage("");
       let combos: Array<string> = makeGlyphCombinations(
         string.value,
         glyphList
-      );
-      let result: string = containsBannedWord(combos, bannedWords);
+      ); //make all combinations
+      let result: string = containsBannedWord(combos, bannedWords); //check if any combo has a banned word
       string.value = "";
       setMessage(
         result
@@ -28,8 +28,11 @@ function Check({ bannedWords, glyphList }: any): JSX.Element {
     }
   };
 
-  const onKeyPress = function(event: any): void {
+  const onKeyPress: (event: React.KeyboardEvent) => void = function(
+    event: React.KeyboardEvent
+  ): void {
     if (event.which === 13) {
+      //prevent enter from reloading the page
       event.preventDefault();
       onButtonClick();
     }

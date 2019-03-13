@@ -1,13 +1,13 @@
 import React from "react";
 
-const ActiveBot = function(props: any): JSX.Element {
+function ActiveBot(props: any): JSX.Element {
   return (
     <tr>
       <td>
         <button
-          onClick={(e): void => {
-            e.preventDefault;
-            props.toggleBot(props.runningProcess[0]);
+          onClick={(event: React.MouseEvent): void => {
+            event.preventDefault;
+            props.toggleBot(props.runningProcess[0]); //we send the tuple to the toggleBot Function to kill
           }}
         >
           Kill Bot
@@ -16,6 +16,6 @@ const ActiveBot = function(props: any): JSX.Element {
       <td>{props.runningProcess[0]}</td>
     </tr>
   );
-};
+}
 
 export default ActiveBot;

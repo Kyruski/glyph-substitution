@@ -27,7 +27,7 @@ const makeLettersList = function(glyphs: object | any) {
     "y",
     "z"
   ];
-  const lettersArray: Array<any> = [];
+  const lettersArray: Array<[string, Array<string>]> = [];
 
   for (let letter of letters) {
     let lettersItem: Array<string> = [];

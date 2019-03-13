@@ -1,7 +1,8 @@
 import React from "react";
 import ActiveBot from "./ActiveBot";
+import { ChildProcess } from "child_process";
 
-const AllActiveBots = function(props: any): JSX.Element {
+function AllActiveBots(props: any): JSX.Element {
   return (
     <div>
       {/* 
@@ -15,7 +16,11 @@ const AllActiveBots = function(props: any): JSX.Element {
         </thead>
         <tbody>
           {props.runningProcesses.map(
-            (runningProcess: any, index: number): JSX.Element => (
+            //maps through all running processes to display in ActiveBot
+            (
+              runningProcess: Array<[string, ChildProcess]>,
+              index: number
+            ): JSX.Element => (
               <ActiveBot
                 runningProcess={runningProcess}
                 toggleBot={props.toggleBot}
@@ -27,6 +32,6 @@ const AllActiveBots = function(props: any): JSX.Element {
       </table>
     </div>
   );
-};
+}
 
 export default AllActiveBots;
