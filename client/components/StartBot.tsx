@@ -63,7 +63,7 @@ function StartBot({ runningProcesses, toggleBot }: Props): JSX.Element {
       >
         Join
       </button>
-      <span className="red-text">{message}</span>
+      <div className="red-text">{message}</div>
     </form>
   );
 }

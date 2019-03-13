@@ -57,7 +57,7 @@ function AddGlyphForm({ addGlyph }: Props): JSX.Element {
       <button type="button" onClick={onButtonClick}>
         Add Glyph
       </button>
-      <span className="red-text">{message}</span>
+      <div className="red-text">{message}</div>
     </form>
   );
 }

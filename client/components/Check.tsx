@@ -50,7 +50,7 @@ function Check({ bannedWords, glyphList }: Props): JSX.Element {
         <button type="button" onClick={onButtonClick}>
           Check String
         </button>
-        <span className="red-text">{message}</span>
+        <div className="red-text">{message}</div>
       </form>
     </div>
   );
