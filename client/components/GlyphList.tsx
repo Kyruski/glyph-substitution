@@ -9,7 +9,7 @@ const GlyphList = function(props: any) {
     <div>
       {/* 
           //@ts-ignore */}
-      <table border="1" style={{ maxWidth: "80%", margin: "0 10%" }}>
+      <table border="1" style={{ maxWidth: "80%", margin: "0 2%" }}>
         <thead>
           <tr>
             <th>Letter</th>

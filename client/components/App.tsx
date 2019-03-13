@@ -94,7 +94,9 @@ function App(): JSX.Element {
           />
           <Route
             path="/AddWord"
-            component={() => <AddWord addWord={addWord} />}
+            component={() => (
+              <AddWord addWord={addWord} bannedWords={bannedWords} />
+            )}
           />
           <Route
             path="/AddGlyph"

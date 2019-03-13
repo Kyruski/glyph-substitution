@@ -1,8 +1,10 @@
 import * as React from "react";
 import { useState } from "react";
+import WordsList from "./WordsList";
 
 function AddWord(props: any): JSX.Element {
   let [message, setMessage] = useState("");
+  let [isShowing, setIsShowing] = useState(false);
 
   const onButtonClick: any = function(): void {
     // @ts-ignore
@@ -35,6 +37,18 @@ function AddWord(props: any): JSX.Element {
         </button>
       </form>
       <div id="add-word-message">{message}</div>
+      <div>
+        <button
+          type="button"
+          onClick={e => {
+            e.preventDefault;
+            setIsShowing(!isShowing);
+          }}
+        >
+          Show All Banned Words
+        </button>
+        {isShowing ? <WordsList wordsList={props.bannedWords} /> : ""}
+      </div>
     </div>
   );
 }
