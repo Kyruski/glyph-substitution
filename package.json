@@ -7,7 +7,9 @@
     "lib": "lib"
   },
   "scripts": {
-    "start": "electron .",
+    "start": "npm install && npm audit fix && webpack -p --config webpack-app.config.js && webpack -p --config webpack-bot.config.js && electron .",
+    "publish": "npm install && npm audit fix && webpack -p --config webpack-app.config.js && webpack -p --config webpack-bot.config.js",
+    "dmc": "electron .",
     "webpack": "webpack -d --watch --config webpack-app.config.js",
     "dev": "ts-node-dev --respawn --transpileOnly ./server/index.ts",
     "bot": "webpack -d --watch --config webpack-bot.config.js",

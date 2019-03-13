@@ -67,11 +67,11 @@ function App(): JSX.Element {
       <div>
         <nav>
           <Link to="/Check">Check for Substitution</Link>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          {"     "}
           <Link to="/AddWord">Add a Banned Word</Link>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          {"     "}
           <Link to="/AddGlyph">Add a Glyph Substitution</Link>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          {"     "}
           <Link to="/Bot">Running Bot Instances</Link>
           {/* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           <button
