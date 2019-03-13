@@ -8,21 +8,24 @@ import AddGlyph from "./AddGlyph";
 import Bot from "./Bot";
 import addBannedWord from "../../lib/addBannedWord";
 import addSubstitution from "../../lib/addGlyph";
-import axios from "axios";
+// import axios from "axios";
+import glyphList from "../../lib/loadDictionary";
+import bannedWords from "../../lib/loadBannedWords";
 import { exec } from "child_process";
 
 function App(): JSX.Element {
+  console.log(bannedWords);
   let [runningProcesses, setRunningProcesses] = useState([]);
 
-  let glyphList: any;
-  let bannedWords: Array<string>;
+  // let glyphList: any;
+  // let bannedWords: Array<string>;
 
-  (function loadItems(): void {
-    axios.get("http://localhost:6969/load").then(data => {
-      glyphList = data.data.glyphList;
-      bannedWords = data.data.bannedWords;
-    });
-  })();
+  // (function loadItems(): void {
+  //   axios.get("http://localhost:6969/load").then(data => {
+  //     glyphList = data.data.glyphList;
+  //     bannedWords = data.data.bannedWords;
+  //   });
+  // })();
 
   const addWord = function(word: string): string {
     let result: string = addBannedWord(word, bannedWords);

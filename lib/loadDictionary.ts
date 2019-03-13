@@ -1,4 +1,5 @@
 import fs from "fs";
+import path from "path";
 
 let letters: Array<string> = [
   "a",
@@ -30,9 +31,13 @@ let letters: Array<string> = [
 ];
 
 const obj: object | any = {};
+let rootPath = path.join(process.argv[0], "../../../../../../../../../../lib");
 for (let letter of letters) {
   let document: Array<string> = fs
-    .readFileSync(__dirname + `/dependencies/letters/${letter}.txt`, "utf-8")
+    .readFileSync(
+      path.join(rootPath, `/dependencies/letters/${letter}.txt`),
+      "utf-8"
+    )
     .split("\r\n");
   for (let item of document) {
     if (item === "") continue;
