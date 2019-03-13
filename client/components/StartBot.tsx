@@ -1,21 +1,10 @@
 import React, { useState } from "react";
 import { ChildProcess } from "child_process";
+import { VoidFunction, KeyPress, IsRunningType } from "../../index";
 
 interface Props {
   runningProcesses: Array<[string, ChildProcess]>;
   toggleBot: (channel: string) => void;
-}
-
-interface VoidFunction {
-  (): void;
-}
-
-interface KeyPress {
-  (event: React.KeyboardEvent): void;
-}
-
-interface IsRunningType {
-  (channel: string): boolean;
 }
 
 function StartBot({ runningProcesses, toggleBot }: Props): JSX.Element {
@@ -33,7 +22,7 @@ function StartBot({ runningProcesses, toggleBot }: Props): JSX.Element {
 
   const buttonClick: VoidFunction = function(): void {
     // @ts-ignore
-    let channel: HTMLInputElement = document.getElementById("join-channel"); //get desired channel
+    const channel: HTMLInputElement = document.getElementById("join-channel"); //get desired channel
     if (isRunning(channel.value)) {
       //check if running
       setMessage("The bot is already active in that channel");

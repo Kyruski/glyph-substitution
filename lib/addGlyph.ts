@@ -1,10 +1,11 @@
 import fs from "fs";
 import path from "path";
+import { GenericObject } from "../index";
 
 function addGlyph(
   glyph: string,
   letter: string,
-  glyphObj: object | any
+  glyphObj: GenericObject
 ): string {
   letter = letter.toLowerCase();
   let rootPath: string = path.join(

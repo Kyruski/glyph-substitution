@@ -1,10 +1,7 @@
 import React from "react";
 import AddGlyphForm from "./AddGlyphForm";
 import ShowGlyphs from "./ShowGlyphs";
-
-interface GenericObject {
-  [key: string]: string;
-}
+import { GenericObject } from "../../index";
 
 interface Props {
   addGlyph: (glyph: string, letter: string) => string;

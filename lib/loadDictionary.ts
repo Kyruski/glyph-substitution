@@ -1,6 +1,7 @@
 import fs from "fs";
 import path from "path";
 import getPath from "./getPath";
+import { GenericObject } from "../index";
 
 let letters: Array<string> = [
   "a",
@@ -31,7 +32,7 @@ let letters: Array<string> = [
   "z"
 ];
 
-const glyphList: object | any = {};
+const glyphList: GenericObject = {};
 let rootPath: string = getPath();
 for (let letter of letters) {
   let document: Array<string> = fs

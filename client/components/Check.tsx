@@ -1,22 +1,11 @@
 import React, { useState } from "react";
 import makeGlyphCombinations from "../../lib/makeGlyphCombinations";
 import containsBannedWord from "../../lib/containsBannedWord";
-
-interface GenericObject {
-  [key: string]: string;
-}
+import { GenericObject, VoidFunction, KeyPress } from "../../index";
 
 interface Props {
   glyphList: GenericObject;
   bannedWords: Array<string>;
-}
-
-interface VoidFunction {
-  (): void;
-}
-
-interface KeyPress {
-  (event: React.KeyboardEvent): void;
 }
 
 function Check({ bannedWords, glyphList }: Props): JSX.Element {

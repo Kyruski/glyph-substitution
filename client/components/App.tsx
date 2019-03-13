@@ -10,18 +10,7 @@ import addBannedWord from "../../lib/addBannedWord";
 import addSubstitution from "../../lib/addGlyph";
 import glyphList from "../../lib/loadDictionary";
 import bannedWords from "../../lib/loadBannedWords";
-
-interface AddWordType {
-  (word: string): string;
-}
-
-interface AddGlyphType {
-  (glyph: string, letter: string): string;
-}
-
-interface ToggleBotType {
-  (channel: string): void;
-}
+import { AddWordType, AddGlyphType, ToggleBotType } from "../../index";
 
 function App(): JSX.Element {
   let [runningProcesses, setRunningProcesses]: [

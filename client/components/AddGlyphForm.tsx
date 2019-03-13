@@ -1,15 +1,8 @@
 import React, { useState } from "react";
+import { VoidFunction, KeyPress } from "../../index";
 
 interface Props {
   addGlyph: (glyph: string, letter: string) => string;
-}
-
-interface VoidFunction {
-  (): void;
-}
-
-interface KeyPress {
-  (event: React.KeyboardEvent): void;
 }
 
 function AddGlyphForm({ addGlyph }: Props): JSX.Element {

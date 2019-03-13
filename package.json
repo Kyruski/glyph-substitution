@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Checks strings for glyph substitutions in words",
   "main": "main.js",
+  "types": "index.d.ts",
   "directories": {
     "lib": "lib"
   },

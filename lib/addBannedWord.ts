@@ -1,9 +1,6 @@
 import fs from "fs";
 import path from "path";
-
-interface AddBannedWord {
-  (word: string, bannedWords: Array<string>): string;
-}
+import { AddBannedWord } from "../index";
 
 let addBannedWord: AddBannedWord;
 let rootPath: string = path.join(

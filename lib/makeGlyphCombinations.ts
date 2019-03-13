@@ -1,3 +1,5 @@
+import { GenericObject } from "../index";
+
 function increaseArraySizeByX(
   length: number,
   arr: Array<string>
@@ -19,7 +21,7 @@ function addToAllCombos(itemToAdd: string, arr: Array<string>): void {
 
 function makeGlyphCombinations(
   inputString: string,
-  obj: object | any
+  obj: GenericObject
 ): Array<string> {
   let combinationsArray: Array<string> = [""];
   for (let glyph of inputString) {

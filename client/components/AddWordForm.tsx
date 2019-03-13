@@ -1,15 +1,8 @@
 import React, { useState } from "react";
+import { VoidFunction, KeyPress } from "../../index";
 
 interface Props {
   addWord: (word: string) => string;
-}
-
-interface VoidFunction {
-  (): void;
-}
-
-interface KeyPress {
-  (event: React.KeyboardEvent): void;
 }
 
 function AddWordForm({ addWord }: Props): JSX.Element {
