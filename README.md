@@ -16,4 +16,6 @@ This bot has a list of almost 2000 glyph substitutions for alphabetical characte
 
 ## How to Get Started
 
-Create a `.env` file in the main directory with `BOT_USERNAME=` (username on twitch to use), `CHANNEL_NAME=` (optional default channel), and `OAUTH_TOKEN=` (the OAUTH from Twitch). Just run `npm start` as this will install all depenedencies, build the js bundles, and start electron. All glyphs and banned words are stored in .txt files in the /lib/dependencies/ directory.
+Create a `.env` file in the main directory with `BOT_USERNAME=` (username on twitch to use), `CHANNEL_NAME=` (optional default channel), and `OAUTH_TOKEN=` (the OAUTH from Twitch).
+While in the main directory, run `npm start` as this will install all depenedencies, build the js bundles, and start electron.
+All glyphs and banned words are stored in .txt files in the /lib/dependencies/ directory.
