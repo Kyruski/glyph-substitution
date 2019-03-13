@@ -9,7 +9,7 @@ import Bot from "./Bot";
 import addBannedWord from "../../lib/addBannedWord";
 import addSubstitution from "../../lib/addGlyph";
 // import axios from "axios";
-import { glyphList, lettersList } from "../../lib/loadDictionary";
+import glyphList from "../../lib/loadDictionary";
 import bannedWords from "../../lib/loadBannedWords";
 import { exec } from "child_process";
 
@@ -99,7 +99,7 @@ function App(): JSX.Element {
           <Route
             path="/AddGlyph"
             component={() => (
-              <AddGlyph addGlyph={addGlyph} lettersList={lettersList} />
+              <AddGlyph addGlyph={addGlyph} glyphList={glyphList} />
             )}
           />
           <Route

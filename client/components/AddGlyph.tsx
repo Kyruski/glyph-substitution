@@ -69,7 +69,7 @@ function AddGlyph(props: any): JSX.Element {
         >
           Show All Glyphs
         </button>
-        {isShowing ? <GlyphList lettersList={props.lettersList} /> : ""}
+        {isShowing ? <GlyphList glyphList={props.glyphList} /> : ""}
       </div>
     </div>
   );

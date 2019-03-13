@@ -30,7 +30,7 @@ let letters: Array<string> = [
   "z"
 ];
 
-const glyphs: object | any = {};
+const glyphList: object | any = {};
 let rootPath = path.join(process.argv[0], "../../../../../../../../../../lib");
 for (let letter of letters) {
   let document: Array<string> = fs
@@ -41,28 +41,14 @@ for (let letter of letters) {
     .split("\r\n");
   for (let item of document) {
     if (item === "") continue;
-    if (glyphs[item]) {
-      if (!glyphs[item].includes(letter)) {
-        glyphs[item] = [...glyphs[item], letter];
+    if (glyphList[item]) {
+      if (!glyphList[item].includes(letter)) {
+        glyphList[item] = [...glyphList[item], letter];
       }
     } else {
-      glyphs[item] = [letter];
+      glyphList[item] = [letter];
     }
   }
 }
 
-const lettersArray: Array<any> = [];
-
-for (let letter of letters) {
-  let lettersItem: Array<string> = [];
-  for (let key in glyphs) {
-    if (glyphs[key].includes(letter)) {
-      lettersItem.push(key);
-    }
-  }
-  lettersArray.push([letter, lettersItem]);
-}
-
-export const lettersList = lettersArray;
-export const glyphList = glyphs;
-export default {};
+export default glyphList;
