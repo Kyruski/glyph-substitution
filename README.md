@@ -12,7 +12,7 @@
 
 ## Solution
 
-> This bot has a list of almost 2000 glyph substitutions for alphabetical characters. This is ~75 glyphs for each letter! The bot will make all permutation based off of the specified substitutions, and check to see if the banned word is contained in any of these permutations.
+> This bot has a list of almost 2000 glyph substitutions for alphabetical characters. This is ~75 glyphs for each letter! The bot will make all permutation based off of the specified substitutions, and check to see if the banned word is contained in any of these permutations. Additionally, new words and new glyphs can be seemlessly added.
 
 ## How to Get Started
 
