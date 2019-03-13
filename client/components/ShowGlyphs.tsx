@@ -1,7 +1,15 @@
 import React, { useState } from "react";
 import GlyphList from "./GlyphList";
 
-function ShowGlyphs(props: any): JSX.Element {
+interface GenericObject {
+  [key: string]: string;
+}
+
+interface Props {
+  glyphList: GenericObject;
+}
+
+function ShowGlyphs({ glyphList }: Props): JSX.Element {
   let [isShowing, setIsShowing]: [boolean, Function] = useState(false); //boolean for if the list of all glpyhs is showing
 
   return (
@@ -15,7 +23,7 @@ function ShowGlyphs(props: any): JSX.Element {
       >
         Show All Glyphs
       </button>
-      {isShowing ? <GlyphList glyphList={props.glyphList} /> : ""}
+      {isShowing ? <GlyphList glyphList={glyphList} /> : ""}
     </div>
   );
 }

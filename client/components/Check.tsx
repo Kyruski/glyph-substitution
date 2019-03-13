@@ -2,10 +2,27 @@ import React, { useState } from "react";
 import makeGlyphCombinations from "../../lib/makeGlyphCombinations";
 import containsBannedWord from "../../lib/containsBannedWord";
 
-function Check({ bannedWords, glyphList }: any): JSX.Element {
+interface GenericObject {
+  [key: string]: string;
+}
+
+interface Props {
+  glyphList: GenericObject;
+  bannedWords: Array<string>;
+}
+
+interface VoidFunction {
+  (): void;
+}
+
+interface KeyPress {
+  (event: React.KeyboardEvent): void;
+}
+
+function Check({ bannedWords, glyphList }: Props): JSX.Element {
   let [message, setMessage]: [string, Function] = useState(""); //message to display on Entry error
 
-  const onButtonClick: () => void = function(): void {
+  const onButtonClick: VoidFunction = function(): void {
     // @ts-ignore
     const string: HTMLInputElement = document.getElementById("check-string"); //grab the string to check
     if (string.value === "") {
@@ -28,9 +45,7 @@ function Check({ bannedWords, glyphList }: any): JSX.Element {
     }
   };
 
-  const onKeyPress: (event: React.KeyboardEvent) => void = function(
-    event: React.KeyboardEvent
-  ): void {
+  const onKeyPress: KeyPress = function(event: React.KeyboardEvent): void {
     if (event.which === 13) {
       //prevent enter from reloading the page
       event.preventDefault();

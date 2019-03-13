@@ -2,8 +2,16 @@ import React from "react";
 import GlyphListItem from "./GlyphListItem";
 import makeLettersList from "../../lib/makeLettersList";
 
-function GlyphList(props: any): JSX.Element {
-  const lettersList = makeLettersList(props.glyphList);
+interface GenericObject {
+  [key: string]: string;
+}
+
+interface Props {
+  glyphList: GenericObject;
+}
+
+function GlyphList({ glyphList }: Props): JSX.Element {
+  const lettersList = makeLettersList(glyphList);
 
   return (
     <div>

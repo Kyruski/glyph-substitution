@@ -1,6 +1,10 @@
 import React from "react";
 
-function WordsList(props: any): JSX.Element {
+interface Props {
+  wordsList: Array<string>;
+}
+
+function WordsList({ wordsList }: Props): JSX.Element {
   return (
     <div>
       {/* 
@@ -12,8 +16,8 @@ function WordsList(props: any): JSX.Element {
           </tr>
         </thead>
         <tbody>
-          {props.wordsList.map(
-            (item: Array<string>, index: number): JSX.Element => (
+          {wordsList.map(
+            (item: string, index: number): JSX.Element => (
               <tr key={`word-${index}`}>
                 <td>{item}</td>
               </tr>

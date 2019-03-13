@@ -2,12 +2,21 @@ import React from "react";
 import AddGlyphForm from "./AddGlyphForm";
 import ShowGlyphs from "./ShowGlyphs";
 
-function AddGlyph(props: any): JSX.Element {
+interface GenericObject {
+  [key: string]: string;
+}
+
+interface Props {
+  addGlyph: (glyph: string, letter: string) => string;
+  glyphList: GenericObject;
+}
+
+function AddGlyph({ addGlyph, glyphList }: Props): JSX.Element {
   return (
     <div>
       <div id="component-title">Add a Glyph to the Substitution list</div>
-      <AddGlyphForm addGlyph={props.addGlyph} />
-      <ShowGlyphs glyphList={props.glyphList} />
+      <AddGlyphForm addGlyph={addGlyph} />
+      <ShowGlyphs glyphList={glyphList} />
     </div>
   );
 }

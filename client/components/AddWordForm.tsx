@@ -1,9 +1,21 @@
 import React, { useState } from "react";
 
-function AddWordForm(props: any): JSX.Element {
+interface Props {
+  addWord: (word: string) => string;
+}
+
+interface VoidFunction {
+  (): void;
+}
+
+interface KeyPress {
+  (event: React.KeyboardEvent): void;
+}
+
+function AddWordForm({ addWord }: Props): JSX.Element {
   let [message, setMessage]: [string, Function] = useState(""); //message to display on Entry error
 
-  const onButtonClick: () => void = function(): void {
+  const onButtonClick: VoidFunction = function(): void {
     // @ts-ignore
     const word: HTMLInputElement = document.getElementById("add-word"); //grabs the word ot be entered
 
@@ -11,15 +23,13 @@ function AddWordForm(props: any): JSX.Element {
       setMessage("Please enter a word to submit"); //if no word is entered
     } else {
       setMessage("");
-      let result: string = props.addWord(word.value); //valid word was entered
+      let result: string = addWord(word.value); //valid word was entered
       word.value = "";
       setMessage(result);
     }
   };
 
-  const onKeyPress: (event: React.KeyboardEvent) => void = function(
-    event: React.KeyboardEvent
-  ): void {
+  const onKeyPress: KeyPress = function(event: React.KeyboardEvent): void {
     if (event.which === 13) {
       //prevents enter from reloading the page
       event.preventDefault();

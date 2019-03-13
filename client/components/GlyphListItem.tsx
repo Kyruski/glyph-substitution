@@ -1,10 +1,14 @@
 import React from "react";
 
-function GlyphListItem(props: any): JSX.Element {
+interface Props {
+  item: [string, Array<string>];
+}
+
+function GlyphListItem({ item }: Props): JSX.Element {
   return (
     <tr>
-      <td>{props.item[0]}</td>
-      <td>{props.item[1].join(", ")}</td>
+      <td>{item[0]}</td>
+      <td>{item[1].join(", ")}</td>
     </tr>
   );
 }

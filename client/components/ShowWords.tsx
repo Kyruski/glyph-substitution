@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import WordsList from "./WordsList";
 
-function ShowWords(props: any): JSX.Element {
+interface Props {
+  bannedWords: Array<string>;
+}
+
+function ShowWords({ bannedWords }: Props): JSX.Element {
   let [isShowing, setIsShowing]: [boolean, Function] = useState(false); //boolean for if the list of all glpyhs is showing;
 
   return (
@@ -15,7 +19,7 @@ function ShowWords(props: any): JSX.Element {
       >
         Show All Banned Words
       </button>
-      {isShowing ? <WordsList wordsList={props.bannedWords} /> : ""}
+      {isShowing ? <WordsList wordsList={bannedWords} /> : ""}
     </div>
   );
 }

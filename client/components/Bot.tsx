@@ -1,17 +1,20 @@
 import React from "react";
 import AllActiveBots from "./AllActiveBots";
 import StartBot from "./StartBot";
+import { ChildProcess } from "child_process";
 
-function Bot(props: any): JSX.Element {
+interface Props {
+  runningProcesses: Array<[string, ChildProcess]>;
+  toggleBot: (channel: string) => void;
+}
+
+function Bot({ runningProcesses, toggleBot }: Props): JSX.Element {
   return (
     <div>
-      <StartBot
-        runningProcesses={props.runningProcesses}
-        toggleBot={props.toggleBot}
-      />
+      <StartBot runningProcesses={runningProcesses} toggleBot={toggleBot} />
       <AllActiveBots
-        runningProcesses={props.runningProcesses}
-        toggleBot={props.toggleBot}
+        runningProcesses={runningProcesses}
+        toggleBot={toggleBot}
       />
     </div>
   );

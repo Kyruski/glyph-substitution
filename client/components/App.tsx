@@ -11,18 +11,30 @@ import addSubstitution from "../../lib/addGlyph";
 import glyphList from "../../lib/loadDictionary";
 import bannedWords from "../../lib/loadBannedWords";
 
+interface AddWordType {
+  (word: string): string;
+}
+
+interface AddGlyphType {
+  (glyph: string, letter: string): string;
+}
+
+interface ToggleBotType {
+  (channel: string): void;
+}
+
 function App(): JSX.Element {
   let [runningProcesses, setRunningProcesses]: [
     Array<[string, ChildProcess]>,
     Function
   ] = useState([]); //an array of all running processes
 
-  const addWord: (word: string) => string = function(word: string): string {
+  const addWord: AddWordType = function(word: string): string {
     let result: string = addBannedWord(word, bannedWords);
     return result;
   };
 
-  const addGlyph: (glyph: string, letter: string) => string = function(
+  const addGlyph: AddGlyphType = function(
     glyph: string,
     letter: string
   ): string {
@@ -30,7 +42,7 @@ function App(): JSX.Element {
     return result;
   };
 
-  const toggleBot: (channel: string) => void = function(channel: string): void {
+  const toggleBot: ToggleBotType = function(channel: string): void {
     let pid: number = 0;
     let index: number = 0;
     for (let [i, item] of runningProcesses.entries()) {

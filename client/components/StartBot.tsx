@@ -1,13 +1,29 @@
 import React, { useState } from "react";
+import { ChildProcess } from "child_process";
 
-function StartBot(props: any): JSX.Element {
+interface Props {
+  runningProcesses: Array<[string, ChildProcess]>;
+  toggleBot: (channel: string) => void;
+}
+
+interface VoidFunction {
+  (): void;
+}
+
+interface KeyPress {
+  (event: React.KeyboardEvent): void;
+}
+
+interface IsRunningType {
+  (channel: string): boolean;
+}
+
+function StartBot({ runningProcesses, toggleBot }: Props): JSX.Element {
   let [message, setMessage]: [string, Function] = useState("");
 
-  const isRunning: (channel: string) => boolean = function(
-    channel: string
-  ): boolean {
+  const isRunning: IsRunningType = function(channel: string): boolean {
     //checks if the bot is running in that channel
-    for (let item of props.runningProcesses) {
+    for (let item of runningProcesses) {
       if (item[0] === channel) {
         return true;
       }
@@ -15,7 +31,7 @@ function StartBot(props: any): JSX.Element {
     return false;
   };
 
-  const buttonClick: () => void = function(): void {
+  const buttonClick: VoidFunction = function(): void {
     // @ts-ignore
     let channel: HTMLInputElement = document.getElementById("join-channel"); //get desired channel
     if (isRunning(channel.value)) {
@@ -25,7 +41,7 @@ function StartBot(props: any): JSX.Element {
     }
     if (channel.value) {
       //if it isn't running, add the channel
-      props.toggleBot(channel.value);
+      toggleBot(channel.value);
       setMessage("");
     } else {
       //no channel was entered
@@ -33,9 +49,7 @@ function StartBot(props: any): JSX.Element {
     }
   };
 
-  const onKeyPress: (event: React.KeyboardEvent) => void = function(
-    event: React.KeyboardEvent
-  ): void {
+  const onKeyPress: KeyPress = function(event: React.KeyboardEvent): void {
     if (event.which === 13) {
       //prevent enter from reloading the page
       event.preventDefault;

@@ -1,9 +1,21 @@
 import React, { useState } from "react";
 
-function AddGlyphForm(props: any): JSX.Element {
+interface Props {
+  addGlyph: (glyph: string, letter: string) => string;
+}
+
+interface VoidFunction {
+  (): void;
+}
+
+interface KeyPress {
+  (event: React.KeyboardEvent): void;
+}
+
+function AddGlyphForm({ addGlyph }: Props): JSX.Element {
   let [message, setMessage]: [string, Function] = useState(""); //message to display on Entry error
 
-  const onButtonClick: () => void = function(): void {
+  const onButtonClick: VoidFunction = function(): void {
     // @ts-ignore
     const glyph: HTMLInputElement = document.getElementById("add-glyph"); //grab glyph
     // @ts-ignore
@@ -14,16 +26,14 @@ function AddGlyphForm(props: any): JSX.Element {
       setMessage("Please enter a letter to submit"); //this occurs when no letter is entered
     } else {
       setMessage(""); //if we make it in here, we have a proper entry.
-      let result: string = props.addGlyph(glyph.value, letter.value);
+      let result: string = addGlyph(glyph.value, letter.value);
       glyph.value = "";
       letter.value = "";
       setMessage(result); // want to display the results (Added or already exists)
     }
   };
 
-  const onKeyPress: (event: React.KeyboardEvent) => void = function(
-    event: React.KeyboardEvent
-  ): void {
+  const onKeyPress: KeyPress = function(event: React.KeyboardEvent): void {
     if (event.which === 13) {
       //prevents enter from reloading the page
       event.preventDefault();
