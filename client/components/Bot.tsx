@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import ActiveBot from "./ActiveBot";
 
-const Bot = function(props: any) {
+const Bot = function(props: any): JSX.Element {
   let [message, setMessage] = useState("");
 
   const isRunning = function(channel: string): boolean {
@@ -14,8 +14,6 @@ const Bot = function(props: any) {
   };
 
   const buttonClick = function(e: any): void {
-    // @ts-ignore
-    e.preventDefault;
     // @ts-ignore
     let channel: HTMLInputElement = document.getElementById("join-channel");
     if (isRunning(channel.value)) {
@@ -49,6 +47,7 @@ const Bot = function(props: any) {
         <button
           type="button"
           onClick={(e: any): void => {
+            e.preventDefault;
             buttonClick(e);
           }}
         >
@@ -57,7 +56,9 @@ const Bot = function(props: any) {
         {message}
       </form>
       <div>
-        <table style={{ border: "1" }}>
+        {/* 
+        //@ts-ignore */}
+        <table border="1">
           <thead>
             <tr>
               <th style={{ width: "80px" }} />

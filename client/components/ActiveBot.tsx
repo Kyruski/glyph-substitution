@@ -1,6 +1,6 @@
 import React from "react";
 
-const ActiveBot = function(props: any) {
+const ActiveBot = function(props: any): JSX.Element {
   return (
     <tr>
       <td>
