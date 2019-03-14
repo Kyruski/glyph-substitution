@@ -1,6 +1,6 @@
 import React from "react";
-import AllActiveBots from "../../containers/AllActiveBots";
-import StartBot from "../../containers/StartBot";
+import AllActiveBots from "../../containers/Bot/AllActiveBots";
+import StartBot from "../../containers/Bot/StartBot";
 
 interface Props {
   toggleBot: (channel: string) => void;

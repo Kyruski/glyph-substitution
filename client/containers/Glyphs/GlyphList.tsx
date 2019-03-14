@@ -1,7 +1,7 @@
 import React from "react";
-import GlyphListItem from "../components/Glyph/GlyphListItem";
-import makeLettersList from "../../lib/makeLettersList";
-import store from "../store";
+import GlyphListItem from "../../components/Glyphs/GlyphListItem";
+import makeLettersList from "../../../lib/makeLettersList";
+import store from "../../store";
 
 function GlyphList(): JSX.Element {
   const lettersList = makeLettersList(store.getState().glyphList);

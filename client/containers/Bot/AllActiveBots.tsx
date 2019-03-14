@@ -1,7 +1,7 @@
 import React from "react";
-import ActiveBot from "../components/Bot/ActiveBot";
+import ActiveBot from "../../components/Bot/ActiveBot";
 import { ChildProcess } from "child_process";
-import store from "../store";
+import store from "../../store";
 
 interface Props {
   toggleBot: (channel: string) => void;

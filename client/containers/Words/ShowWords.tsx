@@ -1,7 +1,7 @@
 import React from "react";
-import WordsList from "../components/Word/WordsList";
-import store from "../store";
-import { setIsShowing } from "../actions";
+import WordsList from "../../components/Words/WordsList";
+import store from "../../store";
+import { setIsShowing } from "../../actions";
 
 function ShowWords(): JSX.Element {
   return (

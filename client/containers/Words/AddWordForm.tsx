@@ -1,7 +1,7 @@
 import React from "react";
-import { VoidFunction, KeyPress } from "../../index";
-import store from "../store";
-import { setMessage } from "../actions";
+import { VoidFunction, KeyPress } from "../../../index";
+import store from "../../store";
+import { setMessage } from "../../actions";
 
 interface Props {
   addWord: (word: string) => string;

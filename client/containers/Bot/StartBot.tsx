@@ -1,7 +1,7 @@
 import React from "react";
-import { VoidFunction, KeyPress, IsRunningType } from "../../index";
-import store from "../store";
-import { setMessage } from "../actions";
+import { VoidFunction, KeyPress, IsRunningType } from "../../../index";
+import store from "../../store";
+import { setMessage } from "../../actions";
 
 interface Props {
   toggleBot: (channel: string) => void;
