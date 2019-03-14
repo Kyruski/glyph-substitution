@@ -1,14 +1,6 @@
 import { createStore, Store } from "redux";
-import bannedWords from "../../lib/loadBannedWords";
-import glyphList from "../../lib/loadDictionary";
+import rootReducer from "../reducers/index";
 
-export const initialState = {
-  bannedWords,
-  glyphList,
-  runningProcesses: [],
-  message: "",
-  isShowing: false
-};
-export const store: Store = createStore(reducer);
+const store: Store = createStore(rootReducer);
 
 export default store;
