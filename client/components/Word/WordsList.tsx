@@ -1,10 +1,7 @@
 import React from "react";
+import store from "../../store";
 
-interface Props {
-  wordsList: Array<string>;
-}
-
-function WordsList({ wordsList }: Props): JSX.Element {
+function WordsList(): JSX.Element {
   return (
     <div>
       {/* 
@@ -16,7 +13,7 @@ function WordsList({ wordsList }: Props): JSX.Element {
           </tr>
         </thead>
         <tbody>
-          {wordsList.map(
+          {store.getState().wordsList.map(
             (item: string, index: number): JSX.Element => (
               <tr key={`word-${index}`}>
                 <td>{item}</td>

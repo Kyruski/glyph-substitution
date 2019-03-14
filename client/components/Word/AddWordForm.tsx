@@ -1,13 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 import { VoidFunction, KeyPress } from "../../../index";
+import store from "../../store";
+import { setMessage } from "../../actions";
 
 interface Props {
   addWord: (word: string) => string;
 }
 
 function AddWordForm({ addWord }: Props): JSX.Element {
-  let [message, setMessage]: [string, Function] = useState(""); //message to display on Entry error
-
   const onButtonClick: VoidFunction = function(): void {
     // @ts-ignore
     const word: HTMLInputElement = document.getElementById("add-word"); //grabs the word ot be entered
@@ -36,7 +36,7 @@ function AddWordForm({ addWord }: Props): JSX.Element {
       <button type="button" onClick={onButtonClick}>
         Add Word
       </button>
-      <div className="red-text">{message}</div>
+      <div className="red-text">{store.getState().message}</div>
     </form>
   );
 }

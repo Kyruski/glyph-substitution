@@ -1,13 +1,13 @@
 import React from "react";
 import ActiveBot from "./ActiveBot";
 import { ChildProcess } from "child_process";
+import store from "../../store";
 
 interface Props {
-  runningProcesses: Array<[string, ChildProcess]>;
   toggleBot: (channel: string) => void;
 }
 
-function AllActiveBots({ runningProcesses, toggleBot }: Props): JSX.Element {
+function AllActiveBots({ toggleBot }: Props): JSX.Element {
   return (
     <div>
       {/* 
@@ -20,7 +20,7 @@ function AllActiveBots({ runningProcesses, toggleBot }: Props): JSX.Element {
           </tr>
         </thead>
         <tbody>
-          {runningProcesses.map(
+          {store.getState().runningProcesses.map(
             //maps through all running processes to display in ActiveBot
             (
               runningProcess: [string, ChildProcess],

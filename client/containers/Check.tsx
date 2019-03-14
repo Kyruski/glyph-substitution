@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import makeGlyphCombinations from "../../lib/makeGlyphCombinations";
 import containsBannedWord from "../../lib/containsBannedWord";
 import { GenericObject, VoidFunction, KeyPress } from "../../index";
+import { setMessage } from "../actions";
+import store from "../store";
 
 interface Props {
   glyphList: GenericObject;
@@ -9,27 +11,27 @@ interface Props {
 }
 
 function Check({ bannedWords, glyphList }: Props): JSX.Element {
-  let [message, setMessage]: [string, Function] = useState(""); //message to display on Entry error
-
   const onButtonClick: VoidFunction = function(): void {
     // @ts-ignore
     const string: HTMLInputElement = document.getElementById("check-string"); //grab the string to check
     if (string.value === "") {
       //no string entered
-      setMessage("Please enter a string to check");
+      store.dispatch(setMessage("Please enter a string to check"));
     } else {
       //valid string
-      setMessage("");
+      store.dispatch(setMessage(""));
       let combos: Array<string> = makeGlyphCombinations(
         string.value,
         glyphList
       ); //make all combinations
       let result: string = containsBannedWord(combos, bannedWords); //check if any combo has a banned word
       string.value = "";
-      setMessage(
-        result
-          ? `That string contains the banned word: ${result}`
-          : "No banned word found in the entered string"
+      store.dispatch(
+        setMessage(
+          result
+            ? `That string contains the banned word: ${result}`
+            : "No banned word found in the entered string"
+        )
       );
     }
   };
@@ -50,7 +52,7 @@ function Check({ bannedWords, glyphList }: Props): JSX.Element {
         <button type="button" onClick={onButtonClick}>
           Check String
         </button>
-        <div className="red-text">{message}</div>
+        <div className="red-text">{store.getState().message}</div>
       </form>
     </div>
   );

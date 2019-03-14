@@ -1,25 +1,25 @@
-import React, { useState } from "react";
+import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import { exec, ChildProcess } from "child_process";
 import Check from "./Check";
-import AddWord from "./Word/AddWord";
-import AddGlyph from "./Glyph/AddGlyph";
-import Bot from "./Bot/Bot";
+import AddWord from "../components/Word/AddWord";
+import AddGlyph from "../components/Glyph/AddGlyph";
+import Bot from "../components/Bot/Bot";
 import addBannedWord from "../../lib/addBannedWord";
 import addSubstitution from "../../lib/addGlyph";
-import glyphList from "../../lib/loadDictionary";
-import bannedWords from "../../lib/loadBannedWords";
 import { AddWordType, AddGlyphType, ToggleBotType } from "../../index";
+import store from "../store";
+import { addRunningProcesses, removeRunningProcesses } from "../actions";
 
 function App(): JSX.Element {
-  let [runningProcesses, setRunningProcesses]: [
-    Array<[string, ChildProcess]>,
-    Function
-  ] = useState([]); //an array of all running processes
+  // let [runningProcesses, setRunningProcesses]: [
+  //   Array<[string, ChildProcess]>,
+  //   Function
+  // ] = useState([]); //an array of all running processes
 
   const addWord: AddWordType = function(word: string): string {
-    let result: string = addBannedWord(word, bannedWords);
+    let result: string = addBannedWord(word, store.getState().bannedWords);
     return result;
   };
 
@@ -27,37 +27,33 @@ function App(): JSX.Element {
     glyph: string,
     letter: string
   ): string {
-    let result: string = addSubstitution(glyph, letter, glyphList);
+    let result: string = addSubstitution(
+      glyph,
+      letter,
+      store.getState().glyphList
+    );
     return result;
   };
 
   const toggleBot: ToggleBotType = function(channel: string): void {
     let pid: number = 0;
-    let index: number = 0;
-    for (let [i, item] of runningProcesses.entries()) {
+    let process: ChildProcess = null;
+    for (let item of store.getState().runningProcesses) {
       //checks if bot is urnning in channel
       if (item[0] === channel) {
         pid = item[1].pid;
-        index = i;
+        process = item;
         break;
       }
     }
     if (pid) {
       //bot is running in channel so kill it
       exec(`kill -9 ${pid}`);
-      let slice1: Array<[string, ChildProcess]> = runningProcesses.slice(
-        0,
-        index
-      );
-      let slice2: Array<[string, ChildProcess]> = runningProcesses.slice(
-        index + 1
-      );
-      setRunningProcesses([...slice1, ...slice2]);
+      store.dispatch(removeRunningProcesses(channel, process));
     } else {
       //bot is not running so start it
       let newProcess: ChildProcess = exec(`node bot.js ${channel}`);
-      // @ts-ignore
-      setRunningProcesses([...runningProcesses, [channel, newProcess]]);
+      store.dispatch(addRunningProcesses(channel, newProcess));
     }
   };
 
@@ -74,27 +70,21 @@ function App(): JSX.Element {
           <Route
             path="/Check"
             component={() => (
-              <Check bannedWords={bannedWords} glyphList={glyphList} />
+              <Check
+                bannedWords={store.getState().bannedWords}
+                glyphList={store.getState().glyphList}
+              />
             )}
           />
           <Route
             path="/AddWord"
-            component={() => (
-              <AddWord addWord={addWord} bannedWords={bannedWords} />
-            )}
+            component={() => <AddWord addWord={addWord} />}
           />
           <Route
             path="/AddGlyph"
-            component={() => (
-              <AddGlyph addGlyph={addGlyph} glyphList={glyphList} />
-            )}
+            component={() => <AddGlyph addGlyph={addGlyph} />}
           />
-          <Route
-            path="/Bot"
-            component={() => (
-              <Bot runningProcesses={runningProcesses} toggleBot={toggleBot} />
-            )}
-          />
+          <Route path="/Bot" component={() => <Bot toggleBot={toggleBot} />} />
         </div>
       </div>
     </Router>
