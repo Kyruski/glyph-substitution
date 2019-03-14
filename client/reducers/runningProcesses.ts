@@ -1,7 +1,10 @@
 import { ChildProcess } from "child_process";
 import { Action } from "../..";
 
-export default (state: Array<[string, ChildProcess]> = [], action: Action) => {
+export default (
+  state: Array<[string, ChildProcess]> = [],
+  action: Action
+): Array<[string, ChildProcess]> => {
   switch (action.type) {
     case "ADD_PROCESS":
       return [...state, [action.channel, action.process]];

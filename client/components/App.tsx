@@ -103,7 +103,9 @@ function App(): JSX.Element {
 
 export default App;
 
-ReactDOM.render(<App />, document.getElementById("app"));
+const render = (): void =>
+  ReactDOM.render(<App />, document.getElementById("app"));
+render();
 
 // import axios from "axios";
 
