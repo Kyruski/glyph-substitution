@@ -1,7 +1,7 @@
 import React from "react";
-import { VoidFunction, KeyPress } from "../../../index";
-import store from "../../store";
-import { setMessage } from "../../actions";
+import { VoidFunction, KeyPress } from "../../index";
+import store from "../store";
+import { setMessage } from "../actions";
 
 interface Props {
   addWord: (word: string) => string;
@@ -13,12 +13,12 @@ function AddWordForm({ addWord }: Props): JSX.Element {
     const word: HTMLInputElement = document.getElementById("add-word"); //grabs the word ot be entered
 
     if (word.value === "") {
-      setMessage("Please enter a word to submit"); //if no word is entered
+      store.dispatch(setMessage("Please enter a word to submit")); //if no word is entered
     } else {
-      setMessage("");
+      store.dispatch(setMessage(""));
       let result: string = addWord(word.value); //valid word was entered
       word.value = "";
-      setMessage(result);
+      store.dispatch(setMessage(result));
     }
   };
 

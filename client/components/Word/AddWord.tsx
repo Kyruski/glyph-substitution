@@ -1,6 +1,6 @@
 import React from "react";
-import AddWordForm from "./AddWordForm";
-import ShowWords from "./ShowWords";
+import AddWordForm from "../../containers/AddWordForm";
+import ShowWords from "../../containers/ShowWords";
 
 interface Props {
   addWord: (word: string) => string;

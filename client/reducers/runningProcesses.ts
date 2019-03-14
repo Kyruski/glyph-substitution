@@ -5,10 +5,11 @@ export default (
   state: Array<[string, ChildProcess]> = [],
   action: Action
 ): Array<[string, ChildProcess]> => {
+  console.log("we in here");
   switch (action.type) {
     case "ADD_PROCESS":
       return [...state, [action.channel, action.process]];
-    case "REMOVE PROCESS":
+    case "REMOVE_PROCESS":
       let index: number;
       for (let i = 0; i < state.length; i++) {
         if (state[i][0] === action.channel) {
@@ -17,7 +18,7 @@ export default (
         }
       }
       //@ts-ignore
-      return index
+      return index !== undefined
         ? [...state.slice(0, index), ...state.slice(index + 1)]
         : state;
     default:

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { VoidFunction, KeyPress } from "../../index";
 import { setMessage } from "../actions";
 import store from "../store";

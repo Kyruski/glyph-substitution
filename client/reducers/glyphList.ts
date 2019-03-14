@@ -6,10 +6,12 @@ export default (
   action: Action
 ): GenericObject => {
   let addItem: GenericObject = {};
-  addItem[action.glyph] = [...state[action.glyph], action.letter];
+  if (action.glyph) {
+    addItem[action.glyph] = [...state[action.glyph], action.letter];
+  }
   switch (action.type) {
     case "ADD_GLYPH":
-      return { ...state, ...addItem };
+      return { ...state, ...addItem }; //BREAKING RIGHT
     default:
       return state;
   }

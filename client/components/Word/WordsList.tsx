@@ -13,7 +13,7 @@ function WordsList(): JSX.Element {
           </tr>
         </thead>
         <tbody>
-          {store.getState().wordsList.map(
+          {store.getState().bannedWords.map(
             (item: string, index: number): JSX.Element => (
               <tr key={`word-${index}`}>
                 <td>{item}</td>

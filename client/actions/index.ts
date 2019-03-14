@@ -11,7 +11,7 @@ export const setIsShowing: Function = (isShowing: boolean): Action => ({
   type: "SWITCH_SHOWING"
 });
 
-export const setBannedWords: Function = (word: string): Action => ({
+export const setBannedWord: Function = (word: string): Action => ({
   word,
   type: "ADD_WORD"
 });
