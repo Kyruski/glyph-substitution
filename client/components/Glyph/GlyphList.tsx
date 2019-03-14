@@ -1,7 +1,7 @@
 import React from "react";
 import GlyphListItem from "./GlyphListItem";
-import makeLettersList from "../../lib/makeLettersList";
-import { GenericObject } from "../../index";
+import makeLettersList from "../../../lib/makeLettersList";
+import { GenericObject } from "../../../index";
 
 interface Props {
   glyphList: GenericObject;

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import GlyphList from "./GlyphList";
-import { GenericObject } from "../../index";
+import { GenericObject } from "../../../index";
 
 interface Props {
   glyphList: GenericObject;

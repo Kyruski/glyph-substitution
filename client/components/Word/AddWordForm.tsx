@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { VoidFunction, KeyPress } from "../../index";
+import { VoidFunction, KeyPress } from "../../../index";
 
 interface Props {
   addWord: (word: string) => string;

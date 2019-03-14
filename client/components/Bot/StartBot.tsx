@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { ChildProcess } from "child_process";
-import { VoidFunction, KeyPress, IsRunningType } from "../../index";
+import { VoidFunction, KeyPress, IsRunningType } from "../../../index";
 
 interface Props {
   runningProcesses: Array<[string, ChildProcess]>;
