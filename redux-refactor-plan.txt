@@ -1,0 +1,8 @@
+2. runningProcesses (App->Bot->AllBot + StartBot)
+3. message (StartBot, Check, GlyphForm, WordsForm)
+4. bannedwords (WordsList, App->Check)
+5. glyphList (GlyphList, App->Check)
+6. isShowing (ShowWord, ShowGlyph)
+
+
+could make function at App for checking string and making combos. Removes need to pass banned and glyph down

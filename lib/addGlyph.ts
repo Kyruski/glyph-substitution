@@ -1,6 +1,9 @@
 import fs from "fs";
 import path from "path";
 import { GenericObject } from "../index";
+import getPath from "./getPath";
+import store from "../client/store";
+import { setGlyphList } from "../client/actions";
 
 function addGlyph(
   glyph: string,
@@ -8,17 +11,10 @@ function addGlyph(
   glyphObj: GenericObject
 ): string {
   letter = letter.toLowerCase();
-  let rootPath: string = path.join(
-    process.argv[0],
-    "../../../../../../../../../../lib"
-  );
-  if (glyphObj[glyph]) {
-    if (glyphObj[glyph].includes(letter))
-      return "Glyph combination already exists.";
-    glyphObj[glyph].push(letter);
-  } else {
-    glyphObj[glyph] = [letter];
-  }
+  let rootPath: string = getPath();
+  if (glyphObj[glyph].includes(letter))
+    return "Glyph combination already exists.";
+  store.dispatch(setGlyphList(glyph, letter));
   fs.appendFileSync(
     path.join(rootPath, `./dependencies/letters/${letter}.txt`),
     glyph + "\r\n"

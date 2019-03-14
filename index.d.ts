@@ -1,5 +1,10 @@
 import React from "react";
 
+export interface Action {
+  type: string;
+  [key: string]: any;
+}
+
 export interface GenericObject {
   [key: string]: Array<string>;
 }

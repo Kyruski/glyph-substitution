@@ -1,12 +1,12 @@
 import fs from "fs";
 import path from "path";
 import { AddBannedWord } from "../index";
+import store from "../client/store";
+import { setBannedWord } from "../client/actions";
+import getPath from "./getPath";
 
 let addBannedWord: AddBannedWord;
-let rootPath: string = path.join(
-  process.argv[0],
-  "../../../../../../../../../../lib"
-);
+let rootPath: string = getPath();
 addBannedWord = function(word: string, bannedWords: Array<string>): string {
   word = word.toLowerCase();
   if (bannedWords.includes(word)) return "Word already exists in the list.";
@@ -14,7 +14,7 @@ addBannedWord = function(word: string, bannedWords: Array<string>): string {
     path.join(rootPath, "../lib/dependencies/bannedWords.txt"),
     word + "\n"
   );
-  bannedWords.push(word);
+  store.dispatch(setBannedWord(word));
   return `Word "${word}" was added to the banned words list.`;
 };
 

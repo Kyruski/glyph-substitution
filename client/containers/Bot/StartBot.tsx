@@ -1,18 +1,16 @@
-import React, { useState } from "react";
-import { ChildProcess } from "child_process";
+import React from "react";
 import { VoidFunction, KeyPress, IsRunningType } from "../../../index";
+import store from "../../store";
+import { setMessage } from "../../actions";
 
 interface Props {
-  runningProcesses: Array<[string, ChildProcess]>;
   toggleBot: (channel: string) => void;
 }
 
-function StartBot({ runningProcesses, toggleBot }: Props): JSX.Element {
-  let [message, setMessage]: [string, Function] = useState("");
-
+function StartBot({ toggleBot }: Props): JSX.Element {
   const isRunning: IsRunningType = function(channel: string): boolean {
     //checks if the bot is running in that channel
-    for (let item of runningProcesses) {
+    for (let item of store.getState().runningProcesses) {
       if (item[0] === channel) {
         return true;
       }
@@ -25,16 +23,16 @@ function StartBot({ runningProcesses, toggleBot }: Props): JSX.Element {
     const channel: HTMLInputElement = document.getElementById("join-channel"); //get desired channel
     if (isRunning(channel.value)) {
       //check if running
-      setMessage("The bot is already active in that channel");
+      store.dispatch(setMessage("The bot is already active in that channel"));
       return;
     }
     if (channel.value) {
       //if it isn't running, add the channel
       toggleBot(channel.value);
-      setMessage("");
+      store.dispatch(setMessage(""));
     } else {
       //no channel was entered
-      setMessage("Please enter a valid channel name");
+      store.dispatch(setMessage("Please enter a valid channel name"));
     }
   };
 
@@ -63,7 +61,7 @@ function StartBot({ runningProcesses, toggleBot }: Props): JSX.Element {
       >
         Join
       </button>
-      <div className="red-text">{message}</div>
+      <div className="red-text">{store.getState().message}</div>
     </form>
   );
 }

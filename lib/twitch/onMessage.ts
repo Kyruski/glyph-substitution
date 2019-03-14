@@ -1,13 +1,17 @@
 import makeGlyphCombinations from "../../lib/makeGlyphCombinations";
 import containsBannedWord from "../../lib/containsBannedWord";
-import glyphList from "../../lib/loadDictionary";
-import bannedWords from "../../lib/loadBannedWords";
+// import glyphList from "../../lib/loadDictionary";
+// import bannedWords from "../../lib/loadBannedWords";
 import tmi from "tmi.js";
 import client from "./bot";
+import store from "../../client/store";
 
 function checkMsg(msg: string): string {
-  let combos: Array<string> = makeGlyphCombinations(msg, glyphList);
-  let result: string = containsBannedWord(combos, bannedWords);
+  let combos: Array<string> = makeGlyphCombinations(
+    msg,
+    store.getState().glyphList
+  );
+  let result: string = containsBannedWord(combos, store.getState().bannedWords);
   return result;
 }
 

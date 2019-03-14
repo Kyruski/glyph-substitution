@@ -1,18 +1,17 @@
 import React from "react";
-import AddWordForm from "./AddWordForm";
-import ShowWords from "./ShowWords";
+import AddWordForm from "../../containers/Words/AddWordForm";
+import ShowWords from "../../containers/Words/ShowWords";
 
 interface Props {
   addWord: (word: string) => string;
-  bannedWords: Array<string>;
 }
 
-function AddWord({ addWord, bannedWords }: Props): JSX.Element {
+function AddWord({ addWord }: Props): JSX.Element {
   return (
     <div>
       <div id="component-title">Add a word to the Banned Words List</div>
       <AddWordForm addWord={addWord} />
-      <ShowWords bannedWords={bannedWords} />
+      <ShowWords />
     </div>
   );
 }
