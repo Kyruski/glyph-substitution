@@ -1,7 +1,7 @@
 import React from "react";
-import { VoidFunction, KeyPress } from "../../index";
-import { setMessage } from "../actions";
-import store from "../store";
+import { VoidFunction, KeyPress } from "../../../index";
+import { setMessage } from "../../actions";
+import store from "../../store";
 
 interface Props {
   addGlyph: (glyph: string, letter: string) => string;

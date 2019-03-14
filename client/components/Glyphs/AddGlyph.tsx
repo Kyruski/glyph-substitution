@@ -1,6 +1,6 @@
 import React from "react";
-import AddGlyphForm from "../../containers/AddGlyphForm";
-import ShowGlyphs from "../../containers/ShowGlyphs";
+import AddGlyphForm from "../../containers/Glyphs/AddGlyphForm";
+import ShowGlyphs from "../../containers/Glyphs/ShowGlyphs";
 
 interface Props {
   addGlyph: (glyph: string, letter: string) => string;

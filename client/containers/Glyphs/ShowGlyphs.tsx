@@ -1,7 +1,7 @@
 import React from "react";
 import GlyphList from "./GlyphList";
-import store from "../store";
-import { setIsShowing } from "../actions";
+import store from "../../store";
+import { setIsShowing } from "../../actions";
 
 function ShowGlyphs(): JSX.Element {
   return (
