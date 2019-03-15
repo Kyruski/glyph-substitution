@@ -11,7 +11,7 @@ export default (
   }
   switch (action.type) {
     case "ADD_GLYPH":
-      return { ...state, ...addItem }; //BREAKING RIGHT
+      return { ...state, ...addItem };
     default:
       return state;
   }

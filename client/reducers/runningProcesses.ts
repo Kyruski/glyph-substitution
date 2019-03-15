@@ -5,7 +5,6 @@ export default (
   state: Array<[string, ChildProcess]> = [],
   action: Action
 ): Array<[string, ChildProcess]> => {
-  console.log("we in here");
   switch (action.type) {
     case "ADD_PROCESS":
       return [...state, [action.channel, action.process]];

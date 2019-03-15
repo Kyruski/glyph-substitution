@@ -107,15 +107,3 @@ const render = (): void =>
   ReactDOM.render(<App />, document.getElementById("app"));
 render();
 store.subscribe(render);
-
-// import axios from "axios";
-
-// let glyphList: any;
-// let bannedWords: Array<string>;
-
-// (function loadItems(): void {
-//   axios.get("http://localhost:6969/load").then(data => {
-//     glyphList = data.data.glyphList;
-//     bannedWords = data.data.bannedWords;
-//   });
-// })();

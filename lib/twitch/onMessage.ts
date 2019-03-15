@@ -1,7 +1,5 @@
 import makeGlyphCombinations from "../../lib/makeGlyphCombinations";
 import containsBannedWord from "../../lib/containsBannedWord";
-// import glyphList from "../../lib/loadDictionary";
-// import bannedWords from "../../lib/loadBannedWords";
 import tmi from "tmi.js";
 import client from "./bot";
 import store from "../../client/store";
@@ -31,15 +29,3 @@ export default function onMessageHandler(
     client.say(target, `/timeout ${user} 10`);
   }
 }
-
-// import axios from "axios";
-
-// let glyphList: any;
-// let bannedWords: Array<string>;
-
-// (function loadItems(): void {
-//   axios.get("http://localhost:6969/load").then(data => {
-//     glyphList = data.data.glyphList;
-//     bannedWords = data.data.bannedWords;
-//   });
-// })();

@@ -19,7 +19,3 @@ addBannedWord = function(word: string, bannedWords: Array<string>): string {
 };
 
 export default addBannedWord;
-
-// import axios from "axios";
-
-// axios.post("http://localhost:6969/load/word", { payload: word });

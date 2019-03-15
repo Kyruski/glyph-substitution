@@ -23,7 +23,3 @@ function addGlyph(
 }
 
 export default addGlyph;
-
-// import axios from "axios";
-
-// axios.post("http://localhost:6969/load/glyph", { glyph, letter });
