@@ -8,12 +8,18 @@ import AddGlyph from "../components/Glyphs/AddGlyph";
 import Bot from "../components/Bot/Bot";
 import addBannedWord from "../../lib/addBannedWord";
 import addSubstitution from "../../lib/addGlyph";
-import { AddWordType, AddGlyphType, ToggleBotType } from "../../index";
+import {
+  AddWordType,
+  AddGlyphType,
+  ToggleBotType,
+  VoidFunction
+} from "../../index";
 import store from "../store";
 import {
   addRunningProcesses,
   removeRunningProcesses,
-  setMessage
+  setMessage,
+  setIsShowing
 } from "../actions";
 
 function App(): JSX.Element {
@@ -59,20 +65,25 @@ function App(): JSX.Element {
     }
   };
 
+  const resetState: VoidFunction = (): void => {
+    store.dispatch(setMessage(""));
+    store.dispatch(setIsShowing(false));
+  };
+
   return (
     <Router>
       <div>
         <nav>
-          <Link to="/Check" onClick={() => store.dispatch(setMessage(""))}>
+          <Link to="/Check" onClick={() => resetState()}>
             Check for Substitution
           </Link>
-          <Link to="/AddWord" onClick={() => store.dispatch(setMessage(""))}>
+          <Link to="/AddWord" onClick={() => resetState()}>
             Add a Banned Word
           </Link>
-          <Link to="/AddGlyph" onClick={() => store.dispatch(setMessage(""))}>
+          <Link to="/AddGlyph" onClick={() => resetState()}>
             Add a Glyph Substitution
           </Link>
-          <Link to="/Bot" onClick={() => store.dispatch(setMessage(""))}>
+          <Link to="/Bot" onClick={() => resetState()}>
             Running Bot Instances
           </Link>
         </nav>
