@@ -10,6 +10,5 @@ export default combineReducers({
   glyphList,
   message,
   isShowing,
-  // @ts-ignore
   runningProcesses
 });
