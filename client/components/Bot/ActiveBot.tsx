@@ -36,7 +36,12 @@ function ActiveBot({ runningProcess, toggleBot, index }: Props): JSX.Element {
             event.preventDefault;
             toggleBot(runningProcess[0]); //we send the tuple to the toggleBot Function to kill
           }}
-          style={{ margin: "auto", display: "block", height: "30px" }}
+          style={{
+            height: "30px",
+            background: "#6441a5",
+            color: "#fff",
+            border: "0"
+          }}
         >
           Kill Bot
         </button>

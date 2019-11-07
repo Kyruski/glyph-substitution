@@ -12,12 +12,14 @@ function AllActiveBots({ toggleBot }: Props): JSX.Element {
     <div>
       {/* 
         //@ts-ignore */}
-      <table border="0">
+      <table
+        style={{ border: "0", margin: "0 auto", borderSpacing: "2px 0px" }}
+      >
         <thead>
           <tr>
-            <th style={{ width: "150px" }}>Channel Name</th>
+            <th style={{ width: "155px" }}>Channel Name</th>
             <th style={{ width: "175px" }}>Active Since</th>
-            <th />
+            <th style={{ width: "60px" }} />
           </tr>
         </thead>
         <tbody>

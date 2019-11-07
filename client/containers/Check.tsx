@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import makeGlyphCombinations from "../../lib/makeGlyphCombinations";
 import containsBannedWord from "../../lib/containsBannedWord";
 import { GenericObject, VoidFunction, KeyPress } from "../../index";
@@ -11,6 +11,10 @@ interface Props {
 }
 
 function Check({ bannedWords, glyphList }: Props): JSX.Element {
+  useEffect(() => {
+    document.title = "Check Banned Word";
+  });
+
   const onButtonClick: VoidFunction = function(): void {
     // @ts-ignore
     const string: HTMLInputElement = document.getElementById("check-string"); //grab the string to check
