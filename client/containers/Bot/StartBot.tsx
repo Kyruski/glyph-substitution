@@ -21,6 +21,7 @@ function StartBot({ toggleBot }: Props): JSX.Element {
   const buttonClick: VoidFunction = function(): void {
     // @ts-ignore
     const channel: HTMLInputElement = document.getElementById("join-channel"); //get desired channel
+    const date: Date = new Date();
     if (isRunning(channel.value)) {
       //check if running
       store.dispatch(setMessage("The bot is already active in that channel"));

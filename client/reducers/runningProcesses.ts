@@ -2,12 +2,12 @@ import { ChildProcess } from "child_process";
 import { Action } from "../..";
 
 export default (
-  state: Array<[string, ChildProcess]> = [],
+  state: Array<[string, ChildProcess, Date]> = [],
   action: Action
-): Array<[string, ChildProcess]> => {
+): Array<[string, ChildProcess, Date]> => {
   switch (action.type) {
     case "ADD_PROCESS":
-      return [...state, [action.channel, action.process]];
+      return [...state, [action.channel, action.process, action.date]];
     case "REMOVE_PROCESS":
       let index: number;
       for (let i = 0; i < state.length; i++) {

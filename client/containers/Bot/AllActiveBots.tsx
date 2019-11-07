@@ -12,24 +12,26 @@ function AllActiveBots({ toggleBot }: Props): JSX.Element {
     <div>
       {/* 
         //@ts-ignore */}
-      <table border="1">
+      <table border="0">
         <thead>
           <tr>
-            <th style={{ width: "80px" }} />
             <th style={{ width: "150px" }}>Channel Name</th>
+            <th style={{ width: "175px" }}>Active Since</th>
+            <th />
           </tr>
         </thead>
         <tbody>
           {store.getState().runningProcesses.map(
             //maps through all running processes to display in ActiveBot
             (
-              runningProcess: [string, ChildProcess],
+              runningProcess: [string, ChildProcess, Date],
               index: number
             ): JSX.Element => (
               <ActiveBot
                 runningProcess={runningProcess}
                 toggleBot={toggleBot}
                 key={`runningProcess-${index}`}
+                index={index}
               />
             )
           )}

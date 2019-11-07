@@ -27,10 +27,12 @@ export const setGlyphList: Function = (
 
 export const addRunningProcesses: Function = (
   channel: string,
-  process: ChildProcess
+  process: ChildProcess,
+  date: Date
 ): Action => ({
   channel,
   process,
+  date,
   type: "ADD_PROCESS"
 });
 

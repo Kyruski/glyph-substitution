@@ -44,24 +44,22 @@ function App(): JSX.Element {
     let pid: number = 0;
     let process: ChildProcess | null = null;
     for (let item of store.getState().runningProcesses) {
-      //checks if bot is urnning in channel
-      console.log("1", item);
+      //checks if bot is running in channel
       if (item[0] === channel) {
-        console.log("we in here");
         pid = item[1].pid;
         process = item;
         break;
       }
     }
     if (pid) {
-      console.log("in here too");
       //bot is running in channel so kill it
       exec(`kill -9 ${pid}`);
       store.dispatch(removeRunningProcesses(channel, process));
     } else {
       //bot is not running so start it
       let newProcess: ChildProcess = exec(`node bot.js ${channel}`);
-      store.dispatch(addRunningProcesses(channel, newProcess));
+      const date: Date = new Date();
+      store.dispatch(addRunningProcesses(channel, newProcess, date));
     }
   };
 
