@@ -1,7 +1,7 @@
 import React from "react";
 import { ChildProcess } from "child_process";
 import store from "../../store";
-import { Table } from "antd";
+import { Table, Button } from "antd";
 
 interface Props {
   toggleBot: (channel: string) => void;
@@ -16,20 +16,17 @@ function AllActiveBots({ toggleBot }: Props): JSX.Element {
 
   const makeButton = (processToKill: string) => {
     return (
-      <button
+      <Button
         onClick={(event: React.MouseEvent): void => {
           event.preventDefault;
           toggleBot(processToKill); //we send the tuple to the toggleBot Function to kill
         }}
         style={{
-          height: "30px",
-          background: "#6441a5",
-          color: "#fff",
-          border: "0"
+          height: "30px"
         }}
       >
         Kill Bot
-      </button>
+      </Button>
     );
   };
 
