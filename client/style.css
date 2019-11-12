@@ -36,6 +36,10 @@ a {
   height: 1em;
 }
 
+.words-table table {
+  margin: 0 5%;
+}
+
 table {
   border: 0;
   margin: 0 auto;

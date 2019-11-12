@@ -1,28 +1,24 @@
 import React from "react";
 import store from "../../store";
+import { Table } from "antd";
 
 function WordsList(): JSX.Element {
+  const columns = [
+    { title: "Banned Word", dataIndex: "word", key: "word", width: "150px" }
+  ];
+  const bannedWords = store.getState().bannedWords;
+  const dataSource = bannedWords.map((word: string, index: number) => ({
+    key: index,
+    word: word
+  }));
+
   return (
-    <div>
-      {/* 
-          //@ts-ignore */}
-      <table border="1" style={{ maxWidth: "80%", margin: "0 2%" }}>
-        <thead>
-          <tr>
-            <th>Word</th>
-          </tr>
-        </thead>
-        <tbody>
-          {store.getState().bannedWords.map(
-            (item: string, index: number): JSX.Element => (
-              <tr key={`word-${index}`}>
-                <td>{item}</td>
-              </tr>
-            )
-          )}
-        </tbody>
-      </table>
-    </div>
+    <Table
+      dataSource={dataSource}
+      columns={columns}
+      pagination={false}
+      className="words-table"
+    />
   );
 }
 

@@ -67,7 +67,7 @@ function AllActiveBots({ toggleBot }: Props): JSX.Element {
         dataSource={dataSource}
         columns={columns}
         pagination={false}
-        className="bot-Table"
+        className="bot-table"
       />
     </>
   ) : (
