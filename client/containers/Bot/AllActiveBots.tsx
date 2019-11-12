@@ -1,45 +1,77 @@
 import React from "react";
-import ActiveBot from "../../components/Bot/ActiveBot";
 import { ChildProcess } from "child_process";
 import store from "../../store";
+import { Table } from "antd";
 
 interface Props {
   toggleBot: (channel: string) => void;
 }
 
 function AllActiveBots({ toggleBot }: Props): JSX.Element {
+  const parseTime = (date: Date) => {
+    let dateArray = date.toISOString().split("T");
+    let time = dateArray[1].split(".")[0];
+    return `${dateArray[0]} at ${time}`;
+  };
+
+  const makeButton = (processToKill: string) => {
+    return (
+      <button
+        onClick={(event: React.MouseEvent): void => {
+          event.preventDefault;
+          toggleBot(processToKill); //we send the tuple to the toggleBot Function to kill
+        }}
+        style={{
+          height: "30px",
+          background: "#6441a5",
+          color: "#fff",
+          border: "0"
+        }}
+      >
+        Kill Bot
+      </button>
+    );
+  };
+
+  const columns = [
+    {
+      title: "Channel Name",
+      dataIndex: "channelName",
+      key: "channelName",
+      width: "155px"
+    },
+    {
+      title: "Active Since",
+      dataIndex: "activeSince",
+      key: "activeSince",
+      width: "175px"
+    },
+    {
+      title: "",
+      dataIndex: "removeBotButton",
+      key: "removeBotButton",
+      width: "60px",
+      background: "none"
+    }
+  ];
   const processes = store.getState().runningProcesses;
+  const dataSource = processes.map(
+    (process: [string, ChildProcess, Date], index: number) => ({
+      key: index,
+      channelName: process[0],
+      activeSince: parseTime(process[2]),
+      removeBotButton: makeButton(process[0])
+    })
+  );
+
   return processes.length ? (
     <>
-      {/* 
-        //@ts-ignore */}
-      <table
-        style={{ border: "0", margin: "0 auto", borderSpacing: "2px 0px" }}
-      >
-        <thead>
-          <tr>
-            <th style={{ width: "155px" }}>Channel Name</th>
-            <th style={{ width: "175px" }}>Active Since</th>
-            <th style={{ width: "60px" }} />
-          </tr>
-        </thead>
-        <tbody>
-          {processes.map(
-            //maps through all running processes to display in ActiveBot
-            (
-              runningProcess: [string, ChildProcess, Date],
-              index: number
-            ): JSX.Element => (
-              <ActiveBot
-                runningProcess={runningProcess}
-                toggleBot={toggleBot}
-                key={`runningProcess-${index}`}
-                index={index}
-              />
-            )
-          )}
-        </tbody>
-      </table>
+      <Table
+        dataSource={dataSource}
+        columns={columns}
+        pagination={false}
+        className="bot-Table"
+      />
     </>
   ) : (
     <div></div>

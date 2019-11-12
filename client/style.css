@@ -35,3 +35,21 @@ a {
   color: red;
   height: 1em;
 }
+
+.bot-Table table {
+  border: 0;
+  margin: 0 auto;
+  border-spacing: 2px 0px;
+}
+
+.bot-Table table td:nth-child(3n) {
+  background-color: #303030;
+}
+
+table tr:nth-child(2n) td {
+  background-color: #707070;
+}
+
+table td {
+  background-color: #505050;
+}
