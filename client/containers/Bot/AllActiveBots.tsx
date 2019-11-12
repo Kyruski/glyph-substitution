@@ -8,8 +8,9 @@ interface Props {
 }
 
 function AllActiveBots({ toggleBot }: Props): JSX.Element {
-  return (
-    <div>
+  const processes = store.getState().runningProcesses;
+  return processes.length ? (
+    <>
       {/* 
         //@ts-ignore */}
       <table
@@ -23,7 +24,7 @@ function AllActiveBots({ toggleBot }: Props): JSX.Element {
           </tr>
         </thead>
         <tbody>
-          {store.getState().runningProcesses.map(
+          {processes.map(
             //maps through all running processes to display in ActiveBot
             (
               runningProcess: [string, ChildProcess, Date],
@@ -39,7 +40,9 @@ function AllActiveBots({ toggleBot }: Props): JSX.Element {
           )}
         </tbody>
       </table>
-    </div>
+    </>
+  ) : (
+    <div></div>
   );
 }
 
